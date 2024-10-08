@@ -1,0 +1,256 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据科学的数学基础</title>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横线示例</title>
+    <style>
+        .custom-line {
+            border: none;        /* 去掉默认边框 */
+            height: 2px;        /* 设置线的高度 */
+            background-color: #000; /* 设置线的颜色 */
+            width: 100%;        /* 设置线的宽度 */
+            margin: 20px 0;     /* 设置上下间距 */
+        }
+    </style>
+</head>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/">
+    <link rel="stylesheet" href="./documents_home/jemdoc.css" type="text/css">
+    <title>Mathematical Foundations for Data Science</title>
+    <style type="text/css" style="display: none !important;">
+        object:not([type]),object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}
+    </style>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+        body {
+            font-size: 24px !important;
+        }
+
+        h1 {
+            font-size: 48px !important;
+        }
+
+        h2 {
+            font-size: 38px !important;
+        }
+
+        p {
+            font-size: 24px !important;
+        }
+        a {
+            font-size: 24px !important;
+        }
+        div {
+            font-size: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <table summary="Table for page layout." id="tlayout">
+        <tbody>
+            <tr valign="top">
+                <td id="layout-menu">
+                    <div class="menu-category">目录</div>
+                    <div class="menu-item"><a href="index.html">课程介绍</a></div>
+                    <div class="menu-item"><a href="Papers.html">经典科研问题</a></div>
+                    <div class="menu-item"><a href="DiscussionPre.html" class="current">讨论教学-预设问题</a></div>
+                    <div class="menu-item"><a href="DiscussionRand.html">讨论教学-即兴问题</a></div>
+                    <div class="menu-item"><a href="OpenQ.html">开放问题列表</a></div>
+                    <div class="menu-item"><a href="Exercises.html">课后习题</a></div>
+                </td>
+                <td id="layout-content">
+                    <p><br></p>
+
+                    <div id="toptitle">
+                        <h1><b>讨论教学-预设问题</b></h1>
+                    </div>
+
+                    <div class="custom-line"></div>
+                    <p>【第一篇论文】Karger, David, et al., "Consistent hashing and random trees: Distributed caching protocols for relieving hot spots on the world wide web," STOC 1997.</p>
+                    <p><b>问题1：</b>一致性哈希如何最小化增加或移除缓存节点对数据分布的影响？</p>
+                    <p><b>答案1：</b>当新节点被加入或现有节点被移除时，一致性哈希确保只有极少数的数据项需要被重新分配到不同的缓存节点上。具体的实现方法是将数据项和节点按其哈希值映射到一个环形哈希空间，每个数据项被分配到环上最近的缓存节点（如以顺时针方向计算距离）。此时，节点的添加或移除只影响环上邻近区域，而不会影响大部分数据映射到的区域。这样显著缓解了传统哈希方法中单一节点变更导致的大量数据迁移问题。</p>
+                    <p><b>问题2：</b>在一致性哈希系统中，如何证明所有缓存节点接收请求的数量都接近平均值，从而说明系统具有良好的负载均衡性？</p>
+                    <p><b>答案2：</b>在一致性哈希系统中，我们可以通过如下几个步骤、使用概率论证明系统在分配负载时的均衡性。这些步骤包括：
+                      （1）模型建立：首先设定一个由多个节点组成的系统，其中每个节点接收的请求是通过一致性哈希算法决定的。在这个模型中，假设所有请求都是独立且均匀地分配到各个节点上的；
+                      （2）计算期望值：因为请求是均匀分布的，所以我们可以计算出每个节点接收到的请求量的期望值；
+                      （3）应用大数定律：大数定律说明，如果有大量的独立相同分布的随机变量，它们的平均值将接近这些随机变量的期望值。在我们的问题中，当总请求量足够大时，所有节点接收到的请求的平均数将非常接近每个节点的期望接收量；
+                      （4）使用Chernoff界进行细化：Chernoff bound是一种求界的工具，用来评估随机变量偏离其期望值的程度。在我们的问题中，它可以用于分析一个节点接收到的请求数量超过或低于其期望值的百分比。
+                      综上，通过结合大数定律和Chernoff界，我们能够证明系统中的所有节点接收到的请求数量都非常接近其期望值。这表明系统在分配请求时非常均衡，没有任何节点会因为接收到过多的请求而过载。</p>
+                 
+                    <div class="custom-line"></div>
+                    <p>【第二篇论文】Broder, Andrei, and Michael Mitzenmacher, "Network applications of bloom filters: A survey," Internet mathematics, 2004.</p>
+                    <p><b>问题1：</b>如何在布隆过滤器中计算误报概率？</p>
+                    <p><b>答案1：</b>布隆过滤器中的误报概率指的是一个不在集合中的元素被错误判定为在集合中的概率。这一概率的计算是基于布隆过滤器的位数组和哈希函数的性质。当一个元素被哈希到过滤器的多个位置上并且所有这些位置上的值都已经被设置为1，那么这个元素会被判为存在于集合中。误报率的数学表达式通常涉及到哈希函数的数量、位数组的大小以及集合中元素的数量。例如当只用一个哈希函数时，可以得到误报的概率表达式为\(1 - \left(1 - \frac{1}{m}\right)^{n}
+\)，其中\(m\)是位数组的大小、\(n\)是集合中元素的数量。</p>
+                    <p><b>问题2：</b>布隆过滤器中使用多个哈希函数的具体作用是什么？</p>
+                    <p><b>答案2：</b>在布隆过滤器中，使用多个独立哈希函数可以增加数据元素映射的均匀性和分散性。每个元素通过这些哈希函数映射到位数组中的多个位置，并将这些位置的值设为1。这种方法的主要作用是减小哈希冲突和误报概率。当查询一个元素是否属于集合时，如果这些位置中有任何一个为0，则可以确定该元素不在集合中。如果所有这些位置都为1，虽然这可能是由于其它元素的哈希冲突造成的，但在多个哈希函数的作用下，这种可能性大大降低。当然，哈希函数的数量也需要仔细设计，以达到误报率和计算效率之间的最佳平衡。</p>
+                 
+                  
+                    <div class="custom-line"></div>
+                    <p>【第三篇论文】Cormode, Graham, and Shan Muthukrishnan, "An improved data stream summary: The count-min sketch and its applications," Journal of Algorithms, 2005.</p>
+                    <p><b>问题1：</b>在Count-Min Sketch中，当接收到数据流的一个新元素时，更新过程具体是怎样实现的？</p>
+                    <p><b>答案1：</b>每次接收到数据流中的一个新元素\(\left(i, c\right)\)，会影响Sketch中的多行（其中\(i\)为元素索引，\(c\ge1\)为元素此次出现次数）。具体而言，对于Sketch的每一行\(j\)（\(j\)取值是从\(1\)到\(d\)，\(d\)为Sketch深度），会有一个对应的哈希函数\(h_j\)。更新过程中，会将增量\(c\)加到第\(j\)行的\(h_j\left(i\right)\)列。这一操作会在所有\(d\)行中执行，确保每个更新项在每行都通过相应的哈希函数进行映射和更新，从而维护了Sketch的当前状态。这种方法保证Sketch能快速地反映出数据流中的变化。</p>
+                    <p><b>问题2：</b>在Count-Min Sketch的查询处理中，如何保证查询的准确性，特别是在处理点查询时？</p>
+                    <p><b>答案2：</b>在处理点查询（即查询特定元素的估计值）时，Count-Min Sketch采用的策略是从多个潜在的值中选择一个最小值来尽可能减少误报的影响。具体来说，对于查询元素\(i\)的点查询，查询结果\({\hat a}_i\)是通过取所有通过哈希函数\(h_j\)映射到的列的计数器值的最小值来确定的，即\({\hat a}_i = \min_{j=1,\ldots,d} {\rm Count}[j, h_j\left(i\right)]\)。这种方法的关键在于，虽然某些哈希映射可能因为冲突而导致有过高的计数，但取最小值可以在一定程度上减少这种误差。</p>
+                  
+                  
+                    <div class="custom-line"></div>
+                    <p>【第四篇论文】Bar-Yossef, Ziv, et al., "Counting distinct elements in a data stream," International Workshop on Randomization and Approximation Techniques in Computer Science, 2002.</p>
+                    <p><b>问题1：</b> 如何通过哈希函数减少算法的空间复杂度，同时保证对数据流中不同元素数量的估计精度？</p>
+                    <p><b>答案1：</b>通过使用随机哈希函数将数据流中的元素映射到一个较小的范围（例如，\([0,1]\)区间或固定大小的桶）中，可以降低算法的空间复杂度。这种方法的关键是选择一个合适的哈希函数，以确保所有元素均匀分布于映射空间，从而减少冲突和偏差。哈希函数的选择直接影响到估计的准确性，因为不同的哈希函数可能会导致不同程度的桶冲突。算法通过维护哈希后的最小值或某种统计量（如哈希桶中元素的计数）来估计流中不同元素的数量。减少哈希值的范围可以显著降低所需的存储空间，但同时需要精心设计算法来控制估计误差，保证结果的可靠性。</p>
+                    <p><b>问题2：</b>在数据流模型中，如何利用多个哈希函数来提高对不同元素数量的估计精度？</p>
+                    <p><b>答案2：</b>为了提高估计精度，可以使用多个独立的哈希函数将数据流中的元素映射到多个不同的哈希表中。每个哈希表保留对应哈希函数的结果，从而在多个维度上累积数据流的信息。通过综合这些独立哈希表的信息，可以更准确地估计不同元素的数量。具体的策略包括取各个哈希表估计的中值或者最小值等，以减少单个哈希函数可能带来的偏差或噪声。多个哈希函数的使用使得算法对元素分布的偏差和个别异常值具有更强的鲁棒性，进而提高了整体的估计精度。同时，这种方法也平衡了空间和时间的开销，通过适当选择哈希函数的数量和哈希表的大小，可以在保证精度的同时控制算法的运行效率。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第五篇论文】Ailon, Nir, and Bernard Chazelle, "Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform," STOC 2006.</p>
+                    <p><b>问题1：</b>Fast Johnson-Lindenstrauss Transform（FJLT）如何利用稀疏投影和随机化傅里叶变换来在低失真的前提下降低数据维度？</p>
+                    <p><b>答案1：</b>FJLT通过结合稀疏随机投影矩阵和随机化傅里叶变换实现数据维度的降低。首先，使用随机化傅里叶变换对数据进行预处理，这一步扩展了任何稀疏向量的support，即在频域中展开了数据的非零分量，从而使得这些数据在随后的处理中更加分散。然后，通过一个稀疏的投影矩阵对这些变换后的数据进行降维，可以极大地降低计算的复杂度。</p>
+                    <p><b>问题2：</b>在FJLT框架下如何确保近邻搜索算法的效率和精度？</p>
+                    <p><b>答案2：</b>为在近邻搜索中提高效率和精度，FJLT提供了一种加速策略：先进行低失真的降维，再执行搜索算法。具体而言，使用FJLT将高维数据映射到较低维的空间中，通过保持原始数据点之间距离的近似不变性，来加速后续的近似最近邻搜索任务。这种方法不仅降低了数据处理的维度，也缩短了数据处理时间，同时由于保留了数据点间的相对距离，保证了搜索结果的准确性。在实际的近似最近邻搜索中，可以将FJLT与其他优化技术（如优化的空间分割或哈希策略）结合使用，进一步提高搜索效率和准确性。</p>
+                  
+                  
+                    <div class="custom-line"></div>
+                    <p>【第六篇论文】Datar, Mayur, et al., "Locality-sensitive hashing scheme based on p-stable distributions," Proceedings of the Annual Symposium on Computational Geometry 2004.</p>
+                    <p><b>问题1：</b>在基于p-稳定分布的局部敏感哈希方案中，如何选择哈希函数以确保近邻点具有更高的相碰概率？</p>
+                    <p><b>答案1：</b>在基于p-稳定分布的LSH方案中，选择哈希函数的关键是利用p-稳定分布的性质，这些分布的特征能保持向量间距离的稳定性。具体方法是，每个哈希函数都通过一个随机生成的向量\(a\)和一个随机偏移量\(b\)来定义，其中向量\(a\)的每个分量独立地从p-稳定分布中采样，\(b\)从\([0, r]\)均匀采样。对于给定的数据点\(v\)，哈希函数的输出由\(\frac{av+b}{r}\)确定，其中\(av\)是计算点积。该方法确保了距离较近的点在哈希到同一个“桶”中的概率高于距离较远的点，从而在检索过程中，通过查看存储在同一哈希桶中的点，可以有效地识别出近邻点。</p>
+                    <p><b>问题2：</b>对于欧几里得空间（尤其是高维欧几里得空间）中的点，该LSH方案具有哪些优势？</p>
+                    <p><b>答案2：</b>该LSH方案的主要优势在于直接在欧几里得空间中操作，无需将数据点嵌入到其它空间，这简化了计算过程并提高了效率。特别是在处理高维数据时，这种方案避免了因维度的增加而导致的计算复杂度和时间开销的显著增加。该方法对高维且稀疏的数据特别有效，因为其运行时间与数据的非零元素数（而非总维数）相关。此外，由于该算法具有良好的扩展性和较低的错误率，它能够在保证相对较高查询精度的同时显著提高查询速度。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第七篇论文】Abdi, Herve, and Lynne J. Williams, "Principal component analysis," Wiley interdisciplinary reviews: Computational statistics 2010.</p>
+                    <p><b>问题1：</b>主成分分析（PCA）中，如何确定保留的主成分数量？</p>
+                    <p><b>答案1：</b>在主成分分析中，确定保留的主成分数量是一个关键步骤，它影响数据降维的效果。一种常用的方法是通过查看分析数据时需要的总变量来决定。可以绘制每个主成分对应的特征值的累计百分比，通常选择在累积贡献率达到一个较高百分比（如\(85\%\)或\(90\%\)）时的主成分数。</p>
+                    <p><b>问题2：</b>在PCA中，如何处理原始数据以确保分析的准确性？</p>
+                    <p><b>答案2：</b>在进行主成分分析前，对原始数据的适当处理是确保分析准确性的关键步骤。
+                      (a) 数据中心化是PCA的基本要求，这涉及将每个变量的所有观测值减去其平均值，从而使得变量的均值为零。中心化的目的是消除数据的平均值对主成分的影响，使得PCA能够专注于数据中的变异情况。
+                      (b) 要对数据做标准化处理，尤其是当不同的变量具有不同的量纲和变化范围时。通过标准化，每个变量除以其标准差，使得所有变量具有单位方差，从而在进行PCA时各变量能被同等对待。这避免了量纲大的变量对主成分的主导，从而使得结果更能真实反映数据的结构。
+                      (c) 检查数据的异常值也是预处理过程中的重要一环。异常值可能会对PCA的结果产生较大影响，尤其是在计算协方差矩阵和主成分时。识别并适当处理这些异常值可以避免得到误导性的分析结果。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第八篇论文】Halko, Nathan, et al., "An algorithm for the principal component analysis of large data sets," SIAM Journal on Scientific Computing 2011.</p>
+                    <p><b>问题1：</b>用随机化方法求主成分的基本思想是什么？</p>
+                    <p><b>答案1：</b>随机化方法通过构造一个包含随机向量的矩阵减少计算量，以识别矩阵\({\boldsymbol A}\)中大奇异值对应的向量。具体而言，首先生成一个包含独立同分布高斯随机变量的矩阵\({\boldsymbol G}\)，然后计算一个新的矩阵\({\boldsymbol H}\)，该矩阵结合了\({\boldsymbol A}\)与自身转置的乘积（如\({\boldsymbol A}^T {\boldsymbol A}\)）。通过对\({\boldsymbol H}\)进行QR分解，得到一个正交矩阵\({\boldsymbol Q}\)，从而捕捉到\({\boldsymbol A}\)的大部分特征。这个过程使得即使在内存不足的情况下，也能有效地进行PCA，从而提高了算法的效率。</p>
+                    <p><b>问题2：</b>如何衡量算法输出的低秩近似的误差？</p>
+                    <p><b>答案2：</b>算法输出的低秩近似误差可定义为\(||{\boldsymbol A} - {\boldsymbol U} {\boldsymbol \Sigma} {\boldsymbol V}^T||_2\)，其中\({\boldsymbol A}\)是原始数据矩阵，\({\boldsymbol U}, {\boldsymbol \Sigma}, {\boldsymbol V}\)是通过算法构造的低秩近似矩阵的组成部分。</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第九篇论文】Klema, Virginia, and Alan Laub, "The singular value decomposition: Its computation and some applications," IEEE Transactions on Automatic Control 1980.</p>
+                    <p><b>问题1：</b>如何定义奇异值分解（SVD），并简要描述其关键属性以及在实际应用中的重要性？</p>
+                    <p><b>答案1：</b>对于任意矩阵\({\boldsymbol A}\)（包括实数和复数矩阵），总存在两个正交矩阵\({\boldsymbol U}\)和\({\boldsymbol V}\)，以及一个对角矩阵\({\boldsymbol \Sigma}\)，使得\({\boldsymbol A}\)可以表示为\({\boldsymbol U}{\boldsymbol \Sigma} {\boldsymbol V}^T\)。其中，\({\boldsymbol \Sigma}\)的对角线元素称为奇异值，按降序排列，其非零元素的个数决定了矩阵的秩。SVD有若干重要属性，例如，奇异值是非负的，反映了矩阵的可逆性和稳定性。在实际应用中，SVD被广泛用于数据降维、回归分析、图像处理以及信号处理等。通过选择较大的奇异值，可以构建出更加简化和高效的模型，从而处理大规模数据集。</p>
+                    <p><b>问题2：</b>对于计算矩阵的奇异值分解，随机化算法如何保证结果的准确性？</p>
+                    <p><b>答案2：</b>随机化算法通过引入概率分析来保证奇异值分解结果的准确性。具体而言，算法涉及多次随机抽样与重采样，通过实施经典的幂迭代法（power method）依次近似得出各奇异向量。在每次迭代中，利用随机向量与矩阵的乘积近似得到该奇异向量。在对随机向量的取值做一定假设的前提下，可以证明幂迭代法可以保证多次乘积后得到的向量在标准化后可以近似待求的单位奇异向量。</p>
+                   
+                    <div class="custom-line"></div>
+                    <p>【第十篇论文】Hastie, Trevor, et al., "Matrix completion and low-rank SVD via fast alternating least squares," The Journal of Machine Learning Research 2015.
+</p>
+                    <p><b>问题1：</b>矩阵补全算法是如何利用核范数正则化来解决缺失数据的问题的？请描述该方法的基本思路和实现步骤。</p>
+                    <p><b>答案1：</b>矩阵补全问题被定义为利用观察到的部分数据来推断缺失数据，这种方法特别适合用于处理稀疏矩阵。具体而言，算法的目标是通过以下优化问题补全矩阵：
+\(\min_{\boldsymbol H} \left(\frac{1}{2} ||{\boldsymbol P}_{{\boldsymbol \Omega}}({\boldsymbol X} - {\boldsymbol H})||_F^2 + \lambda ||{\boldsymbol H}||_*\right)\)
+其中，\({\boldsymbol P}_{{\boldsymbol \Omega}}\)是一个投影运算符，用于保留观察到的元素并设缺失的数据为零。核范数\(||{\boldsymbol H}||_*\)对应矩阵\({\boldsymbol H}\)奇异值的和。
+                    算法的实现步骤如下：（1）首先填充出一个初始矩阵，通常可以用\(0\)或观察值的平均值来填充。（2）迭代更新：将当前的估计值\({\boldsymbol H}_k\)插入到缺失位置，形成一个新填充矩阵\({\boldsymbol X}^* = {\boldsymbol P}_{{\boldsymbol \Omega}}\left({\boldsymbol X}\right) + {\boldsymbol P}_{\boldsymbol \Omega}^\perp({\boldsymbol H}_k)\)。然后通过求解软阈值奇异值分解，更新估计值，达到低秩近似的目的。（3）收敛检查：重复更新过程，直到损失函数收敛或者达到预设的迭代次数。</p>
+                    <p><b>问题2：</b>对大规模矩阵的补全有什么加速处理的技巧？</p>
+                    <p><b>答案2：</b>在面对大规模矩阵补全问题时，可以考虑如下方法。首先，可以通过稀疏矩阵表示来优化存储。例如，可以使用稀疏矩阵存储格式（例如CSR或CSC格式）只存储非零元素。这种方法大幅度减少了需要存储的数据量，从而节省了内存空间。其次，使用迭代的低秩SVD计算，而不是直接计算完整矩阵的SVD。通过利用Lanczos方法或其他近似技术，进行降秩SVD的计算，算法只在需要时计算较低秩的特征，这样可以减少计算开销。最后，利用并行计算和分布式处理技术来应对计算瓶颈。基于Spark使算法在多台机器上并行运行，通过并行化矩阵运算来加速计算过程。</p>
+                  
+                
+                    <div class="custom-line"></div>
+                    <p>【第十一篇论文】Y. Ng, Andrew, et al., "On spectral clustering: Analysis and an algorithm," NIPS 2001.</p>
+                    <p><b>问题1：</b>谱聚类算法具体是如何通过构造亲和矩阵和拉普拉斯矩阵来分析数据集的聚类结构的？</p>
+                    <p><b>答案1：</b>该方法通过构造亲和矩阵（Affinity Matrix）和标准化的拉普拉斯矩阵（Normalized Laplacian Matrix）来分析和处理数据聚类。算法的第一步是构造亲和矩阵\(\boldsymbol A\)，其中元素\({A}_{ij}\)定义为\(\exp(-||s_i - s_j||^2 / (2\sigma^2))\)，这里的\(\sigma\)是控制衰减速率的尺度参数。亲和矩阵反映了数据点之间的局部相似性，其中更接近的点具有更高的相似性值。
+                      第二步是定义对角矩阵\(\boldsymbol D\)。其对角元素由\(\boldsymbol A\)的行之和给出，即\(D_{ii}=\Sigma_j A_{ij}\)。然后构造标准化的拉普拉斯矩阵\({\boldsymbol L} = {\boldsymbol D}^{-1/2} {\boldsymbol A} {\boldsymbol D}^{-1/2}\)。这一步的目的是调整各个点的度量，以便平衡各个节点在图中的重要性。
+                      第三步是通过求解\({\boldsymbol L}\)的前\(k\)个最大特征值对应的特征向量来找到数据的低维表示，这些特征向量被用来构造新的特征矩阵\({\boldsymbol X}\)。每一行表示原始数据点在新的\(k\)维空间中的映射。为了最终确定聚类，\({\boldsymbol X}\)的每一行将被进一步归一化，使得每个点在特征空间中的表示为单位长度，这有助于K-means等聚类算法更有效地工作。</p>
+                    <p><b>问题2：</b>如何证明算法能够准确地恢复出原始数据的聚类结构？</p>
+                    <p><b>答案2：</b>考虑一个理想的设定，不同聚类中的点假设为相聚无限远离，这意味着亲和矩阵\(\boldsymbol A\)在不同聚类间的元素为零。此时的亲和矩阵\(\boldsymbol A\)和相应的标准化拉普拉斯矩阵\(\boldsymbol L\)都是块对角矩阵，每个块对应一个聚类内的亲和矩阵。在这种设置下，标准化拉普拉斯矩阵\(\boldsymbol L\)的特征向量和特征值揭示了聚类的结构。由于 \(\boldsymbol L\)是块对角的，其特征向量是各个块的特征向量的直接组合。这样，每个块的主特征向量（对应最大特征值）定义了一个聚类。算法通过将这些特征向量合并成矩阵\(\boldsymbol X\)，然后对\(\boldsymbol X\)的行进行单位归一化处理，得到矩阵\(\boldsymbol Y\)。该矩阵每行表示原始数据点在特征空间中的映射。根据算法的设定，理想情况下\(\boldsymbol Y\)的行将完美地对应于原始数据的聚类结构，因为每个聚类内的点映射到k-球面上的一个单位点、不同聚类的点映射到不同的点。这使得在\(\boldsymbol Y\)上应用简单的聚类算法（如 K-means）可以准确无误地恢复出原始数据的聚类结构。</p>
+                    
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十二篇论文】Donoho, David L., "Compressed sensing," IEEE Transactions on Information Theory 2006.</p>
+                    <p><b>问题1：</b>压缩感知如何利用稀疏表示来减少必要的采样数量，说明这种方法的基本理论原理是什么？</p>
+                    <p><b>答案1：</b>压缩感知利用信号的稀疏性来显著减少所需的采样数。具体而言，许多自然信号，如图像和声音，在某种变换域（如傅里叶或小波变换域）中具有稀疏性，即信号的大部分信息可以用少数非零系数表示。在压缩感知框架中，信号\(\boldsymbol x\)被假设为\({\mathbb R}^m\)空间中的一个向量，其在某个正交基中的表示非常稀疏。信号\(\boldsymbol x\)的稀疏表示\(\boldsymbol \theta\)满足\(||\boldsymbol \theta||_p \le t\)，这里\(p\)在0到1之间。通过这种方式，原始信号可以通过其最重要的若干个系数来近似重建。
+                    压缩感知的关键在于使用非自适应的线性测量来捕获信号信息，这些测量可以视为信号与一组随机生成的测试向量（如高斯随机向量）的内积。重要的是，所需的测量数量远小于信号维度。通过求解一个优化问题（如基追踪或\(l_1\)最小化问题）可以从这些测量中准确重建原始信号。</p>
+                    <p><b>问题2：</b>论文提到的基追踪（Basis Pursuit）算法在压缩感知中的作用是什么，以及它如何利用\(l_1\)最小化来重建信号？</p>
+                    <p><b>答案2：</b>基追踪（Basis Pursuit）算法是一种用于信号重建的关键技术。它的核心思想是利用\(l_1\)范数最小化来恢复原始的稀疏信号。这种方法特别适用于处理在某些基下稀疏或可压缩的信号，例如在小波、傅里叶或其他变换域中。在压缩感知设置中，信号\(\boldsymbol x\)通过非自适应的线性测量被编码成测量向量\(\boldsymbol y\)，其中\({\boldsymbol y} = {\boldsymbol \Phi}{\boldsymbol x} + {\rm noise}\)。这里的\(\boldsymbol \Phi\)是一个\(m \times n\)的测量矩阵，通常包含随机元素，用以保证它与稀疏基的不相关性。
+                      Basis Pursuit通过求解下列优化问题来从测量向量\(\boldsymbol y\)中重建信号\(\boldsymbol x\)：\(\min{~~}||{\boldsymbol x}||_1 {~~~~} {\rm subject~to~} {\boldsymbol \Phi x} = {\boldsymbol y}\).这里的目标函数表示\(\boldsymbol x\)的\(l_1\)范数，是\(\boldsymbol x\)向量中所有元素绝对值的总和。\(l_1\)范数的最小化有助于促进解的稀疏性，因为它倾向于生成包含许多零元素和少数非零元素的解，从而有效地恢复原始的稀疏信号。理论上，当测量矩阵\(\boldsymbol \Phi\)满足一定的条件（如有限等距性质），Basis Pursuit能够准确地从少量测量中恢复稀疏信号。即使在噪声存在的情况下，\(l_1\)最小化方法也表现出对噪声的强大鲁棒性，能够近似恢复原始信号。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十三篇论文】Wu, Yan, et al., "Deep Compressed Sensing," ICML 2019.</p>
+                    <p><b>问题1：</b>深度压缩感知（DCS）如何通过学习测量函数和生成器来提高信号恢复的质量和速度？</p>
+                    <p><b>答案1：</b>深度压缩感知DCS结合了深度学习和压缩感知，它通过优化测量过程和重建过程来提高信号恢复的性能和速度。在传统的压缩感知中，信号的恢复依赖于稀疏性假设和随机测量，而DCS框架引入了深度神经网络来学习这些测量和重建函数，从而不再局限于稀疏信号假设。DCS通过两个关键策略实现性能提升：（1）学习测量函数：DCS不仅使用传统的随机投影矩阵，还引入了可学习的测量函数，这些函数由深度神经网络实现。通过训练这些测量函数，系统能学习到如何更有效地从原始高维信号中提取有用的信息，使得测量更加精确和有针对性。（2）元学习优化重建过程：DCS使用元学习方法来优化重建算法，即通过训练一个模型来改进另一个模型的学习过程。在DCS中，重建过程通过梯度下降进行优化，并通过反向传播来微调这一过程，使其能够更快地收敛到高质量的解决方案。</p>
+                    <p><b>问题2：</b>如何利用生成对抗网络（GAN）的思想改进压缩感知？</p>
+                    <p><b>答案2：</b>生成对抗网络（GAN）的概念可以应用于压缩感知，具体而言，测量函数可以被视为GAN中的判别器，而生成器则用于重建信号。这种方法的核心在于使用GAN框架中的对抗性训练来改进测量和重建过程。具体实现机制如下：（1）将判别器作为测量函数：判别器的任务是区分来自数据分布的真实样本和生成器产生的假样本。这一判别过程实质上就是一个测量过程，它测量样本是否真实，并将这一测量结果用于后续的优化和学习。（2）优化生成器：生成器的目标是最小化由判别器提供的测量误差。这一过程涉及到潜在空间的优化，即通过梯度下降调整潜在变量以生成更真实的样本，从而欺骗判别器。（3）提升训练稳定性：通过在潜在空间进行优化改善生成样本的质量，通过这种方式，生成的样本也能更好地覆盖数据的多样性，提高模型的泛化能力。</p>
+                  
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十四篇论文】Tropp, Joel A., and Anna C. Gilbert, "Signal recovery from random measurements via orthogonal matching pursuit," IEEE Transactions on Information Theory 2007.</p>
+                    <p><b>问题1：</b>如何证明OMP算法在使用高斯测量时能有效恢复稀疏信号?</p>
+                    <p><b>答案1：</b>理论上可以证明，只要测量次数足够多，OMP算法可以从高斯分布的测量向量中准确地恢复出一个稀疏度为\(m\)的信号。具体而言，若\(N\ge K m \ln (\frac{d}{\delta})\)，其中\(d\)是信号的维度，\(\delta\)是错误概率，\(K\)是一个常数，那么OMP能以超过\(1−2\delta\)的概率恢复出信号。OMP算法的工作原理是迭代地选择与当前残差最相关的测量向量，并更新残差。使用随机矩阵理论中的结果可以证明，高斯测量向量具有很好的测量属性，这使得OMP算法能够以很高的概率恢复稀疏信号。具体证明基于高斯向量与任意固定向量的内积遵循特定的概率分布，以及高斯向量的独立同分布性。</p>
+                    <p><b>问题2：</b>相较于基础追踪（BP）算法，正交匹配追踪（OMP）算法在处理随机测量矩阵时有什么局限性？</p>
+                    <p><b>答案2：</b>首先，测量次数需求较高。尽管OMP算法能有效恢复稀疏信号，但相比于BP算法，它通常需要更多的测量次数来保证同等水平的恢复概率。虽然OMP算法的测量次数近似为\(m\ln d\)，但这仍多于BP算法在理论上的测量次数需求。其次，恢复稳定性较低。在处理非完美稀疏或有噪声的信号时，OMP算法的表现可能不如BP算法稳定。这是因为OMP算法在选择测量向量时（尤其是在信号的非零成分分布较为接近时）可能无法充分考虑到所有的稀疏成分。</p>
+
+                  
+
+
+                    <div id="footer">
+                        <div id="footer-text">
+                            <div id="footer-text2">Copyright (c) 2024 Haoran Yu. All rights reserved.</div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script type="text/javascript" async="" src="./documents_home/ga.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga1.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga2.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24986751-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        function show(){
+         if(document.getElementById("table_foot").style.display=="block"){
+          document.getElementById("table_foot").style.display="none";
+         }else{
+          document.getElementById("table_foot").style.display="block";
+         }
+        }
+    </script>
+
+    <style type="text/css">
+        embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	 display: none !important;}
+    </style>
+</body>
+
+</html>

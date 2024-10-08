@@ -1,0 +1,263 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据科学的数学基础</title>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横线示例</title>
+    <style>
+        .custom-line {
+            border: none;        /* 去掉默认边框 */
+            height: 2px;        /* 设置线的高度 */
+            background-color: #000; /* 设置线的颜色 */
+            width: 100%;        /* 设置线的宽度 */
+            margin: 20px 0;     /* 设置上下间距 */
+        }
+    </style>
+</head>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/">
+    <link rel="stylesheet" href="./documents_home/jemdoc.css" type="text/css">
+    <title>Mathematical Foundations for Data Science</title>
+    <style type="text/css" style="display: none !important;">
+        object:not([type]),object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}
+    </style>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+        body {
+            font-size: 24px !important;
+        }
+
+        h1 {
+            font-size: 48px !important;
+        }
+
+        h2 {
+            font-size: 38px !important;
+        }
+
+        p {
+            font-size: 24px !important;
+        }
+        a {
+            font-size: 24px !important;
+        }
+        div {
+            font-size: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <table summary="Table for page layout." id="tlayout">
+        <tbody>
+            <tr valign="top">
+                <td id="layout-menu">
+                    <div class="menu-category">目录</div>
+                    <div class="menu-item"><a href="index.html">课程介绍</a></div>
+                    <div class="menu-item"><a href="Papers.html">经典科研问题</a></div>
+                    <div class="menu-item"><a href="DiscussionPre.html">讨论教学-预设问题</a></div>
+                    <div class="menu-item"><a href="DiscussionRand.html">讨论教学-即兴问题</a></div>
+                    <div class="menu-item"><a href="OpenQ.html" class="current">开放问题列表</a></div>
+                    <div class="menu-item"><a href="Exercises.html">课后习题</a></div>
+                </td>
+                <td id="layout-content">
+                    <p><br></p>
+
+                    <div id="toptitle">
+                        <h1><b>开放问题列表</b></h1>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <p>第一讲及第一篇论文</p>
+                            <ul>
+                            <li><p>Q1: 如何为动态环境设计一致性哈希的改进算法？例如，在服务器节点非常频繁地加入或离开的情况下，需要探索新的算法以减少数据迁移的次数，同时保证负载均匀分配。</p></li>
+                            <li><p>Q2: 当前大多数一致性哈希都是针对一维数据进行设计的，如何为多维数据设计一致性哈希算法从而实现更复杂的负载分配和查询？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第二讲及第二篇论文</p>
+                            <ul>
+                            <li><p>Q1: 布隆过滤器的设计关键之一是控制其误判率，是否存在改进算法可以在不显著增加内存的情况下，优化布隆过滤器的准确性，以保证更高的查询精确度？</p></li>
+                            <li><p>Q2: 在许多应用中，数据的从属状态不是静态的，所以布隆过滤器需要支持动态的元素添加和删除。如何改进布隆过滤器来实现这一点？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                            
+                        <li>
+                            <p>第三讲及第三篇论文</p>
+                            <ul>
+                            <li><p>Q1: 在快速变化的数据流中，最小计数草图的元素出现次数可能会剧烈波动，如何设计有效的方法来自动调整草图的参数以提高准确性？比如，是否可以引入自适应机制来动态更新草图，以确保在高动态环境中准确捕捉元素的频次变化？</p></li>
+                            <li><p>Q2: 当前最小计数草图可能在某些特定应用中有局限性，是否可以将其与其他算法（例如哈希表或滑动窗口技术）结合，以实现更好的处理效率和准确度？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第四讲及第四篇论文</p>
+                            <ul>
+                            <li><p>Q1: 在数据流存在动态特征（如元素频率随时间动态变化）的情况下，最小哈希的静态性质可能导致估计误差，如何设计一种改进的最小哈希方法来适应这种动态变化？</p></li>
+                            <li><p>Q2: 数据流中的元素可能具有多种不同的分布特性，例如正态分布、幂律分布等，最小哈希的性能是否受到这些分布的影响？如果是，是否存在改进的方法能够提高在这些复杂分布下的元素计数精度？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第五讲及第五篇论文</p>
+                            <ul>
+                            <li><p>Q1: 在处理来自不同源和格式的异构数据时，JL转换的表现可能受其参数设置的影响，可以采用哪些方法探索不同参数组合对降维效果的影响？</p></li>
+                            <li><p>Q2: 深度学习技术在特征抽取和降维方面展现了强大的潜力，能否将JL转换作为一种基础的数据预处理方法，与深度学习模型的特征提取过程相结合？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第六讲及第六篇论文</p>
+                            <ul>
+                            <li><p>Q1: 在处理动态数据流时，如何在不重新构建哈希表的情况下，保持局部敏感哈希的高效性与准确性？我们可以采用哪些技术手段来实时更新哈希表，以便适应数据的变化？</p></li>
+                            <li><p>Q2: 局部敏感哈希的碰撞率会显著影响其搜索效率和准确性，可以通过哪些新的改进来优化碰撞率并提高相似项检索的准确性？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第七讲及第七篇论文</p>
+                            <ul>
+                            <li><p>Q1: PCA主要用于线性关系的数据集，但面对高度非线性的数据，PCA的效果可能会显著下降。可以采用哪些非线性扩展方法（如核主成分分析）来提升PCA在这类数据中的应用效果？</p></li>
+                            <li><p>Q2: 当前存在多种降维技术，是否可以将PCA与其他方法（如自编码器）结合以获取更好的降维效果？如何设计实验以验证这种结合的有效性？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第八讲及第八篇论文</p>
+                            <ul>
+                            <li><p>Q1: 在处理大规模稀疏矩阵时，传统的幂迭代法可能收敛缓慢，且计算效率低下。如何通过改进算法，如引入预处理技术或结合其他数值方法，来提升其在稀疏矩阵上的特征值计算效率？</p></li>
+                            <li><p>Q2: 在实际应用中，数据矩阵和协方差矩阵可能会随时间不断变化，如何调整幂迭代法以适应这些动态变化的矩阵？通过哪些方法可以实现在线更新特征值，而不必重新计算整个矩阵的特征值？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第九讲及第九篇论文</p>
+                            <ul>
+                            <li><p>Q1: 随着数据量的增长，传统的SVD可能变得极为耗时，可以采用哪些算法优化来提高SVD的计算效率？例如，是否可以对计算过程进行并行化处理？</p></li>
+                            <li><p>Q2: 在许多实际应用中，数据通常会受到噪声干扰，SVD在这种情况下的鲁棒性可能不足，可以引入哪些技术来提高其对噪声的抵抗力？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第十讲及第十篇论文</p>
+                            <ul>
+                            <li><p>Q1: 高维稀疏矩阵的特点使得低秩近似面临收敛慢和准确性低的问题，可以采用哪些算法改进来提升其性能？</p></li>
+                            <li><p>Q2: 生成模型在模拟复杂数据分布方面表现出色，如何将低秩矩阵近似与生成对抗网络或其他生成模型结合，以改善数据的补全质量？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第十一讲及第十一篇论文</p>
+                            <ul>
+                            <li><p>Q1: 在社交网络中，社区的结构常常影响信息传播和用户行为，可以通过哪些谱图方法来提高大规模社交图数据中社区检测的准确性？</p></li>
+                            <li><p>Q2: 高维和稀疏数据经常导致谱聚类算法的性能下降，可以采用哪些策略来提高谱聚类在这些复杂数据集上的鲁棒性？例如，如何结合特征选择或降维技术来优化输入数据，从而改善聚类结果？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第十二讲及第十二篇论文</p>
+                            <ul>
+                            <li><p>Q1: 传统的压缩感知方法在静态数据上的表现较好，但在实时动态信号（如视频流或传感器数据）中面临挑战，可以通过哪些算法改进来提高动态信号的重构质量和效率？</p></li>
+                            <li><p>Q2: 噪声现实世界中普遍存在，尤其是在信号采集过程中，如何设计有效的实验来评估不同压缩感知算法在各种噪声环境下的表现？可以采用哪些指标来量化算法的鲁棒性和重构性能？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第十三讲及第十三篇论文</p>
+                            <ul>
+                            <li><p>Q1: 自适应采样在采集数据时可以更智能地选择有效样本，能否提出结合稀疏恢复的自适应采样机制，以减少冗余数据并提高重构质量？</p></li>
+                            <li><p>Q2: 稀疏恢复方法能否与最新的深度学习模型相结合，以提高信号重构的质量？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                      
+                        <li>
+                            <p>第十四讲及第十四篇论文</p>
+                            <ul>
+                            <li><p>Q1: 目前的RIP条件主要针对线性稀疏信号，能否构建新的理论框架来考虑非线性或者具有复杂结构的信号（如图信号和时间序列数据）？在这些场景中，如何证明其稀疏恢复的可行性和有效性？</p></li>
+                            <li><p>Q2: Coherence在稀疏恢复的理论分析中的角色至关重要，能否系统性地分析不同数据结构下的coherence对恢复性能的影响？</p></li>
+                            </ul>
+                        </li>
+                        <br><br> 
+                    </ul>
+
+
+                  
+   
+                    <div id="footer">
+                        <div id="footer-text">
+                            <div id="footer-text2">Copyright (c) 2024 Haoran Yu. All rights reserved.</div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script type="text/javascript" async="" src="./documents_home/ga.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga1.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga2.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24986751-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        function show(){
+         if(document.getElementById("table_foot").style.display=="block"){
+          document.getElementById("table_foot").style.display="none";
+         }else{
+          document.getElementById("table_foot").style.display="block";
+         }
+        }
+    </script>
+
+    <style type="text/css">
+        embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{     display: none !important;}
+    </style>
+</body>
+
+</html>

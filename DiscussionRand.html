@@ -1,0 +1,258 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据科学的数学基础</title>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横线示例</title>
+    <style>
+        .custom-line {
+            border: none;        /* 去掉默认边框 */
+            height: 2px;        /* 设置线的高度 */
+            background-color: #000; /* 设置线的颜色 */
+            width: 100%;        /* 设置线的宽度 */
+            margin: 20px 0;     /* 设置上下间距 */
+        }
+    </style>
+</head>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/">
+    <link rel="stylesheet" href="./documents_home/jemdoc.css" type="text/css">
+    <title>Mathematical Foundations for Data Science</title>
+    <style type="text/css" style="display: none !important;">
+        object:not([type]),object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}
+    </style>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+        body {
+            font-size: 24px !important;
+        }
+
+        h1 {
+            font-size: 48px !important;
+        }
+
+        h2 {
+            font-size: 38px !important;
+        }
+
+        p {
+            font-size: 24px !important;
+        }
+        a {
+            font-size: 24px !important;
+        }
+        div {
+            font-size: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <table summary="Table for page layout." id="tlayout">
+        <tbody>
+            <tr valign="top">
+                <td id="layout-menu">
+                    <div class="menu-category">目录</div>
+                    <div class="menu-item"><a href="index.html">课程介绍</a></div>
+                    <div class="menu-item"><a href="Papers.html">经典科研问题</a></div>
+                    <div class="menu-item"><a href="DiscussionPre.html">讨论教学-预设问题</a></div>
+                    <div class="menu-item"><a href="DiscussionRand.html" class="current">讨论教学-即兴问题</a></div>
+                    <div class="menu-item"><a href="OpenQ.html">开放问题列表</a></div>
+                    <div class="menu-item"><a href="Exercises.html">课后习题</a></div>
+                </td>
+                <td id="layout-content">
+                    <p><br></p>
+
+                    <div id="toptitle">
+                        <h1><b>讨论教学-即兴问题</b></h1>
+                    </div>
+
+                    <div class="custom-line"></div>
+                    <p>【第一讲及第一篇论文】</p>
+                    <p><b>问题1：</b>在讲到分布式缓存时，提到了用哈希函数来决定一个文件存储在哪台机器上，为什么在这种情况下选择使用MD5算法？</p>
+                    <p><b>答案1：</b>MD5算法在分布式系统中被广泛用于文件或数据的哈希处理，主要因为它的几个优点。首先，MD5算法生成的哈希值具有很好的随机性和分布性，这意味着它能够将输入数据均匀地映射到哈希值上，减少哈希碰撞的可能性。其次，MD5算法运行效率高，能够快速地处理大量数据，并生成固定长度（128位）的哈希值，这对于系统设计来说简化了数据处理的复杂性。虽然MD5在安全领域因为容易受到碰撞攻击而逐渐被其他算法替代，但在分布式缓存系统中，安全需求不是主要考虑因素，其高效和均匀的哈希特性使得MD5仍然是一个非常适合的选择。</p>
+                  
+                    <p><b>问题2：</b>使用一致性哈希时，如果有服务器宕机了，会对系统造成什么影响？</p>
+                    <p><b>答案2：</b>如果有服务器宕机，该服务器上的所有数据需要被迁移至其他服务器。服务器宕机时，我们可以把它和相应的哈希槽从哈希环上移除，原本这部分哈希槽上存储的数据将按照环的顺时针方向迁移到第一个遇到的仍在工作的服务器。</p>
+                  
+                    <p><b>问题3：</b>如果哈希环上的服务器分布不均匀怎么办？比如在服务器数目比较少的时候，某个服务器对应的哈希槽占的比例过大。</p>
+                    <p><b>答案3：</b>理想情况下，我们希望环上的服务器能够均匀分布，以确保数据也能均匀地分配到每台服务器上。如果服务器在哈希环上分布不均，某些服务器会承担比其他服务器更重的负载，这可能导致出现链式宕机的情况。一种解决方法是采用“虚拟节点”技术，为每个服务器在哈希环上分配多个虚拟节点。换句话说，每个服务器不只计算一个哈希值，而是计算多个哈希值、对应到环上的不同位置。这样即便服务器数目比较少，它们分别分配到的环上比例也会比较均衡。</p>
+                  
+              
+                  
+                    <div class="custom-line"></div>
+                    <p>【第二讲及第二篇论文】</p>
+                    <p><b>问题1：</b>布隆过滤器可不可以处理元素的删除操作？即让一个原本被标记为属于集合的元素的标记结果更改为不属于？</p>
+                    <p><b>答案1：</b>布隆过滤器的一个主要缺陷是它不支持从集合中删除元素。因为当你将一个元素加入布隆过滤器时，会通过多个哈希函数设置位数组中的几个位为1。由于多个集合中其它元素可能共享相同的位，你无法确定哪些位仅由需要删除的元素设置，因此简单地将位从1改为0可能会影响到其他元素的判断。如果需要支持删除操作，可以考虑使用改进的“计数布隆过滤器”，它不仅记录位的状态，而且为每个位维护一个计数器。增加元素时，相应的位计数器增加；删除元素时，计数器减少。这种方式可以支持元素的添加和删除，但代价是需要更多的存储空间。</p>
+                  
+                    <p><b>问题2：</b>除了课上和论文中提到的内容分发网络，布隆过滤器还有其它的应用吗？</p>
+                    <p><b>答案2：</b>还有其它许多应用，只要是在本质上属于从属判断问题，都有可能可以用到布隆过滤器。比如垃圾邮件或信息的过滤，我们平时使用的电子邮箱和浏览器可以使用布隆过滤器快速检查传入的电子邮件或网页的URL是否出现在已知的恶意列表中。</p>
+                  
+                  
+                    <div class="custom-line"></div>
+                    <p>【第三讲及第三篇论文】</p>
+                    <p><b>问题1：</b>Boyer-Moore算法的时间和空间复杂度怎么分析？</p>
+                    <p><b>答案1：</b>Boyer-Moore算法可以找出数组中出现次数超过一半的元素，基本思想是通过一对一抵消不同的元素。算法维护两个变量，一个是候选的目前认为的多数元素candidate，另一个是计数器count。遍历数组的过程中，每遇到一个与candidate相同的元素，就将count增加1；每遇到一个不同的元素，则将count减少1。如果count降到0，则更换候选者并重置count。由于多数元素的数量超过数组长度的一半，所以最终candidate一定是多数元素。这个算法只需要一次遍历，因此时间复杂度为O(n)，即执行算法的时间随着数组长度线性增长。算法除了两个辅助变量外不需要额外空间，所以空间复杂度为O(1)，即不取决于数组的大小。</p>
+                  
+                    <p><b>问题2：</b>在Boyer-Moore算法中，如果计数器c一直减少至零，这是不是可以说明数组中没有多数元素（即出现次数超过一半的元素）？</p>
+                    <p><b>答案2：</b>计数器c减少至零只意味之前考虑的元素和其它元素已经完全抵消，这不表示数组中没有多数元素。算法的设计确保即使计数器多次归零，仍然能继续更新候选者并重新开始计数。只要数组中确实存在多数元素，这个元素最终将保持计数器值为正，直到数组遍历完成。</p>
+                  
+                    <p><b>问题3：</b>在CM Sketch的应用中，是不是也有和布隆过滤器一样的误报的概念？</p>
+                    <p><b>答案3：</b>在CM Sketch中是可能发生误报。CM Sketch是用多个哈希函数将元素映射到数组的不同位置，并对这些位置进行数值加1，如果不同的元素映射到同一组位置，就可能导致某个元素的计数被过度增加。这种累加效应导致当查询某个元素出现次数时，得到的计数可能包括了其他元素的计数，从而产生高于实际值的估计，这也就是误报。我们可以通过增加数组的宽度、使用更多的哈希函数来减少误报。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第四讲及第四篇论文】</p>
+                    <p><b>问题1：</b>为什么选择使用最小哈希而不是直接记录每个元素？如果直接记录下历史上出现的所有元素，依然可以让我们分析出不同元素的个数？</p>
+                    <p><b>答案1：</b>最小哈希的优势在于它可以在占用极少存储空间的情况下，给出一个元素集合大小的估计。如果直接记录每个元素，在数据流包含数据很多时，将需要巨大的存储空间。例如，如果一个数据流包含数百万个不同元素（这在网络流量分析、大规模文本处理等场景中很常见），直接记录每个元素的出现将非常耗费内存。</p>
+                    
+                    <div class="custom-line"></div>
+                    <p>【第五讲及第五篇论文】</p>
+                    <p><b>问题1：</b>为什么不能用欧式距离统一衡量数据之间的相似性而要定义Jaccard相似度等其它的衡量方式？</p>
+                    <p><b>答案1：</b>在处理文本数据时，欧几里得距离可能不太适用。主要原因是文本数据通常是高维稀疏数据。在高维空间中，欧几里得距离受到维度的影响很大，高维空间中的点通常距离都很远，这会导致欧几里得距离的判别能力下降。此外，文本数据的特征通常是单词的出现频率等，这些特征是非负的。在这种情况下，使用如余弦相似度这样基于角度或方向的测量可能更合适，因为它能更好地捕捉文档之间的相似性，而忽略了它们的长度或大小差异。</p>
+                  
+                    <p><b>问题2：</b>为什么高维空间中数据之间的欧氏距离通常比较远？能有一些数值的分析吗？</p>
+                    <p><b>答案2：</b>在高维空间中，数据点之间的欧氏距离通常比较远的现象主要源于“维数诅咒”。这可以从几何和概率的角度来解释。随着维度的增加，空间的体积急剧增加，而数据点分布于这个庞大空间中，使得任意两点间的距离都变得较大。例如，对于在单位超立方体（每个维度长度为1的立方体）中均匀分布的点，我们可以计算两点间的期望距离。假设两个点在一维空间中的坐标为\(X\)和\(Y\)，它们的距离是\(|X - Y|\)。当这些点均匀分布于\([0, 1]\)时，距离\(|X - Y|\)的期望值可以计算得为\(\frac{1}{3}\)。然后我们试着扩展到高维空间，假设有两个点\(X\)和\(Y\)在\(d\)维单位超立方体中。它们在第\(i\)维的坐标分别为\(X_i\)和\(Y_i\)，则这两点间的欧式距离为：\(D = \sqrt{\left(\sum_{i=1}^d (X_i - Y_i)^2\right)}\)。每一维的\(X_i - Y_i\)都是均匀分布在\([-1, 1]\)区间的变量。经过数学计算，我们可以得出\(D\)的期望为\({\mathbb E}[D] = \sqrt{\frac{d}{3}}\)。从这个结果，我们能看出来，数据点之间的距离的期望随着维数的增高而增高</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第六讲及第六篇论文】</p>
+                    <p><b>问题1：</b>最小哈希和最前面介绍的Jaccard相似度有什么关系？</p>
+                    <p><b>答案1：</b>在处理大规模数据集时，直接计算每一对集合的Jaccard相似度可能会非常耗时。这时，可以使用最小哈希来估计Jaccard相似度。最小哈希通过对每个集合应用哈希函数，取集合中所有元素的哈希值的最小值作为该集合的特征签名。这些签名可以用来快速估计集合间的Jaccard相似度，因为相似的集合会有较高概率生成相同的最小哈希值。通过这种方法，我们可以将时间复杂度从依赖于集合大小的直接比较减少到依赖于哈希数量的比较，大幅提高处理速度。</p>
+                  
+                    <p><b>问题2：</b>JL转换可以应用于集合类数据吗？也就是用Jaccard相似度衡量相似性的集合类数据？</p>
+                    <p><b>答案2：</b>JL转换主要是用于保持欧几里得距离的降维技术，它适合处理那些以距离度量（如欧几里得距离或曼哈顿距离）为基础的数据分析问题。对于集合类数据，我们一般还是用最小哈希或者局部敏感哈希。</p>
+                  
+                    <p><b>问题3：</b>JL转换对选取的随机矩阵有什么要求吗？还是任意随机矩阵都可以？</p>
+                    <p><b>答案3：</b>JL转换确实对选用的随机矩阵有一些要求，以确保降维后保持原始数据点间的距离关系。首先，随机矩阵的元素需要从一个固定的概率分布中独立随机选取，比如高斯分布和均匀分布。其次，矩阵中的每个元素都应独立于其他元素生成。最后，为保持数据的规模并减少变换后数据的失真，通常需要对矩阵的行或列进行规范化处理。一个常用的方法是将每个元素除以\(\sqrt{k}\)其中 \(k\)是目标低维空间的维数。这种规范化有助于保证降维后数据点之间的欧氏距离期望保持不变。</p>
+                  
+
+                    <div class="custom-line"></div>
+                    <p>【第七讲及第七篇论文】</p>
+                    <p><b>问题1：</b>PCA和JL转换这两种降维方法有什么主要区别？</p>
+                    <p><b>答案1：</b>PCA和JL转换都是常用的数据降维方法，但它们的目标不同。JL转换主要用于在保持欧氏距离的基础上将高维数据降维，其目的是确保降维后的数据距离和原始数据距离尽可能一致，并且它与数据本身无关，所以可以随机生成降维矩阵。PCA更强调数据的可解释性，它通过寻找主成分，即那些能够解释数据方差的方向，对数据进行降维。PCA的降维结果是把原始数据拆解成若干主成分的线性组合，其中每个主成分都能够解释原始数据的某个维度，因而可以帮助我们更好地理解数据的内部结构。</p>
+                  
+                    <p><b>问题2：</b>在主成分分析中为什么要选择使降维后数据方差最大的方向作为主成分？</p>
+                    <p><b>答案2：</b>因为方差越大，意味着不同原始数据写成若干向量的线性组合后在这个向量对应的方向上有较大的差异，意味着这个方向包含的信息量越大。通过选择这个方向对应的向量为主成分，我们能够在降维后保留尽可能多的不同数据之间的差异，从而更容易对数据进行可视化和分析。</p>
+                  
+                    <p><b>问题3：</b>为什么在PCA中主成分必须是正交的？如果不正交会有什么问题？</p>
+                    <p><b>答案3：</b>主成分正交的原因是为了确保每个主成分能够独立解释数据的不同方面。如果主成分不正交，意味着这些方向之间存在线性相关性，那么它们对应的信息会有重叠，导致降维后的结果无法准确地反映数据的结构。正交性保证了每个主成分能够最大化解释数据中的差异，而不与其他主成分重复。这样每个主成分在数据降维后都是唯一且互不影响的，从而可以更清晰地解析数据结构。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第八讲及第八篇论文】</p>
+                    <p><b>问题1：</b>概率论中随机向量有协方差矩阵的概念，这里PCA中也有协方差矩阵\({\boldsymbol X}^T {\boldsymbol X}\)，除了为了便于后续计算，它有什么具体的含义吗？</p>
+                    <p><b>答案1：</b>在PCA中，我们可以为数据矩阵\({\boldsymbol X}\)计算协方差矩阵\({\boldsymbol X}^T {\boldsymbol X}\)。这个矩阵的第\(i\)行第\(j\)列显示了原数据中第\(i\)维和第\(j\)维之间的线性关系。这个值越大说明数据在这两个维度的变化方法越相似。我们做PCA时就是通过分析数据中差异最大的方向来找出数据的主成分。</p>
+                  
+                    <p><b>问题2：</b>在幂迭代法中，为什么需要在每次迭代时将向量归一化？似乎在数学上只需要在最后一步进行归一化就可以了？</p>
+                    <p><b>答案2：</b>在幂迭代法中，每次迭代后，向量的长度可能会不断被放大，导致数值变得非常大，进而引发计算的数值不稳定性。归一化可以保持向量的长度固定，从而避免数值溢出，并且使迭代过程集中在向量的方向上，而不是向量的大小上。通过归一化，我们确保每次迭代后的向量依然保持为单位向量，进而正确逼近矩阵最大特征值对应的单位特征向量。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第九讲及第九篇论文】</p>
+                    <p><b>问题1：</b>在奇异值分解中，\(\boldsymbol U\)和\(\boldsymbol V\)矩阵有具体的物理意义吗？</p>
+                    <p><b>答案1：</b>我们可以把一个\(m\times n\)的矩阵\(\boldsymbol X\)看作一个可以对某个向量做线性变换的矩阵。此时，\(\boldsymbol X\)做奇异值分解后得到的矩阵\(\boldsymbol U\)就表示了数据在原始空间的主要变化方向，而\(\boldsymbol V\)则表示了数据在目标空间中的主要变化方向。换而言之，这两个矩阵分别代表了原始空间和目标空间的正交基，它们分别提供了一个坐标系，使得数据在这个坐标系下的变换可以通过奇异值分解中的对角矩阵\(\boldsymbol S\)进行缩放操作。</p>
+                  
+                    <p><b>问题2：</b>在奇异值分解中，奇异值必须按照从大到小的顺序排列吗？</p>
+                    <p><b>答案2：</b>在数学上我们完全可以互换各奇异值的位置（以及相应奇异向量的位置），但在应用中我们要求奇异值分解得到的奇异值按照从大到小顺序排列，这是为了方便数据分析和降维应用。较大的奇异值对应的是数据中方差最大的方向，反映了数据的主要特征。通过这种排序，我们可以优先保留那些解释数据中最多信息的奇异值，而较小的奇异值则通常可以被忽略。例如，在需要进行数据压缩时，我们可以只保留前几个较大的奇异值，而舍弃那些较小的奇异值，从而达到降维或降秩的效果。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十讲及第十篇论文】</p>
+                    <p><b>问题1：</b>为什么在数据压缩中使用低秩矩阵近似可以有效减少存储空间？矩阵的大小不是没有变化吗？</p>
+                    <p><b>答案1：</b>低秩矩阵近似通过只保留矩阵的主要结构信息来减少存储需求。对于一个\(m\times n\)矩阵，存储所有元素需要\(m n\)个数字。但如果我们可以找到一个秩为\(k\)的近似矩阵，那么我们一定能把这个近似矩阵拆写成一个\(m\times k\)矩阵和一个\(k\times n\)矩阵的乘积。在这种情况下，存储这两个矩阵需要的空间减少到\(k\left(m+n\right)\)，这比存储原矩阵可能要小得多。这种减少特别适用于数据压缩，因为大多数数据的主要信息都集中在少数几个奇异值上，舍弃其它较小的奇异值及奇异向量不会显著影响数据的总体结构。</p>
+                  
+                    <p><b>问题2：</b>在低秩矩阵近似中，有什么标准可以用于选择\(k\)值？</p>
+                    <p><b>答案2：</b>如果\(k\)值太小，可能会丢失较多的信息，从而导致近似误差较大；如果\(k\)值太大，虽然近似矩阵更加接近原始矩阵，但压缩效果就不明显。因此，\(k\)值的选择需要在精度和压缩效率之间做平衡。常用的标准是通过累计奇异值能量的比例来选择\(k\)值。例如，我们可以选择\(k\)值使得保留下来的\(k\)个奇异值的总和占所有原奇异值总和的比例不低于某个阈值（\(比如85\%\)），这样既能保证较好的近似精度，又能有效减少计算和存储开销。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十一讲及第十一篇论文】</p>
+                    <p><b>问题1：</b>拉普拉斯矩阵至少有1个值为零的特征值，那值为零的特征值越多能说明图的结构有哪些性质吗？</p>
+                    <p><b>答案1：</b>拉普拉斯矩阵的零特征值的个数与图的连通分量数目有关。拉普拉斯矩阵\({\boldsymbol L}\)至少有一个零特征值，对应的特征向量是所有元素相等的向量。如果图是连通的，那么拉普拉斯矩阵只有一个零特征值。如果图有多个连通分量，那么每个连通分量都会对应一个零特征值。因此，零特征值的个数等于图中连通分量的个数。</p>
+                  
+                    <p><b>问题2：</b>除了介绍的稀疏割问题，有没有其它类似的基于图的最优化问题？</p>
+                    <p><b>答案2：</b>除了稀疏割问题，基于图的优化问题还有许多，比如最小割问题问题就和稀疏割类似但不完全相同。最小割问题（Minimum Cut Problem）目标是寻找一种对图的顶点集合的切割方案使得横跨两个顶点集合的边的总数目最小。这类问题通常用于网络流量分析等应用。不同于稀疏割问题，最小割问题在分割时不考虑集合的大小平衡，而仅最小化割到的总边数。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十二讲及第十二篇论文】</p>
+                    <p><b>问题1：</b>在压缩感知中，我们要求测量矩阵\(\boldsymbol C\)满足有限等距性质，那在实际应用中具体应该怎么取这么一个矩阵？</p>
+                    <p><b>答案1：</b>一个常见的做法是使用随机矩阵，比如让测量矩阵\(\boldsymbol C\)的元素独立随机地从标准正态分布或伯努利分布中取值。前者是元素从一个连续分布中取值，后者是限制元素从离散集合中取值。利用随机矩阵相关的理论，我们可以证明这类随机矩阵具有很大的概率满足RIP性质。</p>
+                  
+                    <p><b>问题2：</b>有限等距性质是怎么构思出来的？为什么能想到需要这么一个性质？</p>
+                    <p><b>答案2：</b>我们可以先从正交矩阵的性质来理解。如果测量矩阵是一个正交矩阵，那么在变换后得到的测量向量一定能完整恢复出原始信号向量。但在压缩感知中，我们的目的是压缩信号，所以测量矩阵的行数一定少于列数，这个时候测量矩阵必然不能是正交矩阵，因为其列向量个数多于列向量维数，各列向量之间无法做到彼此两两正交。这个时候，我们可以要求测量矩阵能够尽量近似正交矩阵的性质：正交矩阵乘以向量后可以保证向量的变换前后的\(l_2\)范数不变，这可以称为变换前后等距；现在我们要近似这个性质，那就可以要求测量矩阵在乘以向量后让向量变换前后的\(l_2\)范数的变化尽量小，这就是有限等距性质的思想。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十三讲及第十三篇论文】</p>
+                    <p><b>问题1：</b>为什么在压缩感知的Matlab实验代码中，使用伪逆矩阵来计算\(l_2\)范数为目标函数的优化问题的解？</p>
+                    <p><b>答案1：</b>在压缩感知实验中，我们用伪逆矩阵来算线性方程组的解。具体而言，当方程组\({\boldsymbol CVs}={\boldsymbol y}\)存在不止一个解时，利用伪逆矩阵计算提供的是最小范数解，也就是\(l_2\)最小化的结果。伪逆矩阵是一种广义逆矩阵，即使在方程组欠定（也就是未知数多于方程数）的情况下，它也能够计算出一个可行解。</p>
+                 
+                    <p><b>问题2：</b>为什么\(l_2\)范数最小化求出的解一般不会是稀疏的？</p>
+                    <p><b>答案2：</b>\(l_2\)范数最小化通常不会得到稀疏解的原因是\(l_2\)范数作为目标函数时惩罚的是作为解的向量的整体大小（即各元素平方和开根号），而不是解的稀疏性。\(l_2\)范数的优化倾向于分布解的能量到向量的所有元素上，使得每个分量的值较小但不会趋于零，也就是让求出的解较为“平滑”。与之不同的是，\(l_1\)范数作目标函数时直接惩罚绝对值，因此更容易将不重要的分量压缩为零，从而产生稀疏性。</p>
+                  
+                    <p><b>问题3：</b>如果用\(l_{1.5}\)作为最小化问题的目标函数呢？对于恢复信号的效果会好吗？</p>
+                    <p><b>答案3：</b>使用\(l_{1.5}\)范数作为目标函数可能在信号恢复中取得一定的折中效果。对于非常稀疏的信号，\(l_{1}\)范数通常会表现得更好，但\(l_{1.5}\)范数可以在稀疏性和数值稳定性之间找到平衡，并可能更好地处理非完全稀疏的信号。此外，在求解最优化问题的时候，处理\(l_{1}\)最小化问题和\(l_{1.5}\)最小化问题的最优化过程会不一样，后者的目标函数会更平滑。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十四讲及第十四篇论文】</p>
+                    <p><b>问题1：</b>在压缩感知中，mutual coherence如何影响信号的恢复能力？为什么coherence越小越容易恢复信号？</p>
+                    <p><b>答案1：</b>在压缩感知中，mutual coherence是用来衡量测量矩阵列向量之间相互相关性的指标。coherence越小，表示矩阵的列向量越接近正交，彼此之间的相似性越低。在这种情况下，不同稀疏信号在压缩过程中会有更明显的区分，投影后的信号能够较好地保留稀疏信号的特征。因此，较小的coherence可以提高信号恢复的准确性，因为在稀疏优化问题中，信号之间的干扰较少，优化算法更容易找到唯一的稀疏解。</p>
+                  
+   
+                    <div id="footer">
+                        <div id="footer-text">
+                            <div id="footer-text2">Copyright (c) 2024 Haoran Yu. All rights reserved.</div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script type="text/javascript" async="" src="./documents_home/ga.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga1.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga2.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24986751-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        function show(){
+         if(document.getElementById("table_foot").style.display=="block"){
+          document.getElementById("table_foot").style.display="none";
+         }else{
+          document.getElementById("table_foot").style.display="block";
+         }
+        }
+    </script>
+
+    <style type="text/css">
+        embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	 display: none !important;}
+    </style>
+</body>
+
+</html>

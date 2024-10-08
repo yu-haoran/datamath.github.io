@@ -1,0 +1,238 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据科学的数学基础</title>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横线示例</title>
+    <style>
+        .custom-line {
+            border: none;        /* 去掉默认边框 */
+            height: 2px;        /* 设置线的高度 */
+            background-color: #000; /* 设置线的颜色 */
+            width: 100%;        /* 设置线的宽度 */
+            margin: 20px 0;     /* 设置上下间距 */
+        }
+    </style>
+</head>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/">
+    <link rel="stylesheet" href="./documents_home/jemdoc.css" type="text/css">
+    <title>Mathematical Foundations for Data Science</title>
+    <style type="text/css" style="display: none !important;">
+        object:not([type]),object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}
+    </style>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+        body {
+            font-size: 24px !important;
+        }
+
+        h1 {
+            font-size: 48px !important;
+        }
+
+        h2 {
+            font-size: 38px !important;
+        }
+
+        p {
+            font-size: 24px !important;
+        }
+        a {
+            font-size: 24px !important;
+        }
+        div {
+            font-size: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <table summary="Table for page layout." id="tlayout">
+        <tbody>
+            <tr valign="top">
+                <td id="layout-menu">
+                    <div class="menu-category">目录</div>
+                    <div class="menu-item"><a href="index.html" class="current">课程介绍</a></div>
+                    <div class="menu-item"><a href="Papers.html">经典科研问题</a></div>
+                    <div class="menu-item"><a href="DiscussionPre.html">讨论教学-预设问题</a></div>
+                    <div class="menu-item"><a href="DiscussionRand.html">讨论教学-即兴问题</a></div>
+                    <div class="menu-item"><a href="OpenQ.html">开放问题列表</a></div>
+                    <div class="menu-item"><a href="Exercises.html">课后习题</a></div>
+                </td>
+                <td id="layout-content">
+                    <p><br></p>
+
+                    <div id="toptitle">
+                        <h1><b>数据科学与大数据技术的数学基础</b></h1>
+                    </div>
+
+                    <p>《数据科学与大数据技术的数学基础》是北京理工大学计算机学院面向本科二年级学生开设的专业基础必修课。课程围绕数据科学、大数据技术的焦点问题与热点应用，介绍随机化方法、谱分析方法等，帮助学生利用概率论和线性代数等数学工具设计和分析算法、对数据进行高效的处理和分析。</p>
+
+                    <p>本网站是基于任课教师<a href="https://yu-haoran.github.io/" target="blank">余皓然</a>在2023-2024学年春季学期面向计算机科学拔尖班的教学实践设立的，介绍了课程内容相应的计算机科学领域经典学术论文，收集了围绕经典学术问题展开的课堂问答，具体的问题包括教师提前预设的问题以及学生在讨论中即兴提出的问题。网站的设立旨在激发学生对主动思考问题的热情，培养学生在课后继续做延伸拓展阅读的习惯。</p>
+
+                    <h2><b>课程内容</b></h2>
+                    <p>课程包含14讲，具体内容及相应课件如下：</p>
+                    <ul>
+                        <li>
+                            <p>第1讲（一致性哈希）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L1.pdf">课件下载</a>
+                            <p>介绍一种用于分布式系统的负载均衡技术，通过将文件和节点映射到环形空间实现节点的动态增加或减少时对文件分布的最小影响。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第2讲（布隆过滤器）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L2.pdf">课件下载</a>
+                            <p>针对数据流中的从属判断问题，介绍一种占用空间少的概率数据结构，该结构可以检测一个元素是否属于一个集合，完全避免漏报的出现。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第3讲（计数最小草图）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L3.pdf">课件下载</a>
+                            <p>针对数据流中的高频元素寻找问题，介绍一种用于频率估计的概率数据结构，该结构通过使用多个哈希函数和计数器支持高效的流数据处理。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第4讲（最小哈希）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L4.pdf">课件下载</a>
+                            <p>针对数据流中的元素个数统计问题，介绍一种基于分析元素哈希函数映射下的最小值估计不同元素个数的技术，并利用切比雪夫不等式分析其性能。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第5讲（k维树；JL转换）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L5.pdf">课件下载</a>
+                            <p>针对欧式距离下的相似文件搜索问题，分别介绍精确和近似的相似文件搜索方法，重点提及JL转换相关的欧式距离下低失真嵌入问题及理论分析。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第6讲（局部敏感哈希）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L6.pdf">课件下载</a>
+                            <p>针对Jaccard相似度下的相似文件搜索问题，结合前面介绍的最小哈希方法，通过将相似的文件映射到同一桶中，提高相似文件的搜索效率。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第7讲（主成分分析A）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L7.pdf">课件下载</a>
+                            <p>介绍数据压缩应用中主成分分析的作用和原理，重点从实现目的出发推导出主成分分析解决的最优化问题及其等价形式。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第8讲（主成分分析B）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L8.pdf">课件下载</a>
+                            <p>通过分析上讲提到最优化问题的解探讨主成分的数学性质，并介绍利用幂迭代法计算主成分的过程，从几何意义和理论证明两个角度说明幂迭代法的有效性。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第9讲（奇异值分解A）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L9.pdf">课件下载</a>
+                            <p>介绍矩阵分解的目的，重点介绍奇异值分解的定义、性质以及两种等价形式之间的转换，比较奇异值分解与特征值分解。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第10讲（奇异值分解B）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L10.pdf">课件下载</a>
+                            <p>介绍低秩矩阵近似问题以及奇异值分解在数据压缩、推荐系统和潜在语义分析等多个方面的应用，重点说明奇异值分解与主成分分析的关联。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第11讲（谱图论）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L11.pdf">课件下载</a>
+                            <p>介绍谱图论的研究目的及思想，重点介绍拉普拉斯矩阵的定义和性质，讲解其在网络分析、数据聚类等方面的应用。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第12讲（压缩感知A）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L12.pdf">课件下载</a>
+                            <p>介绍压缩感知的核心思想以及数据压缩与恢复的主要步骤，通过经典的劣币寻找问题讲解恢复压缩数据的思想。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第13讲（压缩感知B）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L13.pdf">课件下载</a>
+                            <p>介绍具体如何利用原始数据的稀疏性从不完全采样得到的压缩数据恢复原始数据，讲解L0、L1、L2最小化问题的可解性及彼此关联。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                        <li>
+                            <p>第14讲（压缩感知C）
+                                <a class="badge badge-success" href="./documents_home/DataMath2024L14.pdf">课件下载</a>
+                            <p>介绍稀疏数据恢复问题的理论分析的历史沿革和主要研究思路及工具，重点讲解基于Coherence和RIP的两种证明思路。</p>
+                            </p>
+                        </li>
+                        <br><br> 
+                    </ul>
+
+
+
+                    <div id="footer">
+                        <div id="footer-text">
+                            <div id="footer-text2">Copyright (c) 2024 Haoran Yu. All rights reserved.</div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script type="text/javascript" async="" src="./documents_home/ga.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga1.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga2.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24986751-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        function show(){
+         if(document.getElementById("table_foot").style.display=="block"){
+          document.getElementById("table_foot").style.display="none";
+         }else{
+          document.getElementById("table_foot").style.display="block";
+         }
+        }
+    </script>
+
+    <style type="text/css">
+        embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	 display: none !important;}
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,336 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据科学的数学基础</title>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横线示例</title>
+    <style>
+        .custom-line {
+            border: none;        /* 去掉默认边框 */
+            height: 2px;        /* 设置线的高度 */
+            background-color: #000; /* 设置线的颜色 */
+            width: 100%;        /* 设置线的宽度 */
+            margin: 20px 0;     /* 设置上下间距 */
+        }
+    </style>
+</head>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/">
+    <link rel="stylesheet" href="./documents_home/jemdoc.css" type="text/css">
+    <title>Mathematical Foundations for Data Science</title>
+    <style type="text/css" style="display: none !important;">
+        object:not([type]),object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}
+    </style>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+        body {
+            font-size: 24px !important;
+        }
+
+        h1 {
+            font-size: 48px !important;
+        }
+
+        h2 {
+            font-size: 38px !important;
+        }
+
+        p {
+            font-size: 24px !important;
+        }
+        a {
+            font-size: 24px !important;
+        }
+        div {
+            font-size: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <table summary="Table for page layout." id="tlayout">
+        <tbody>
+            <tr valign="top">
+                <td id="layout-menu">
+                    <div class="menu-category">目录</div>
+                    <div class="menu-item"><a href="index.html">课程介绍</a></div>
+                    <div class="menu-item"><a href="Papers.html">经典科研问题</a></div>
+                    <div class="menu-item"><a href="DiscussionPre.html">讨论教学-预设问题</a></div>
+                    <div class="menu-item"><a href="DiscussionRand.html">讨论教学-即兴问题</a></div>
+                    <div class="menu-item"><a href="OpenQ.html">开放问题列表</a></div>
+                    <div class="menu-item"><a href="Exercises.html" class="current">课后习题</a></div>
+                </td>
+                <td id="layout-content">
+                    <p><br></p>
+
+                    <div id="toptitle">
+                        <h1><b>课后习题</b></h1>
+                    </div>
+
+                    <div class="custom-line"></div>
+                    <p>【第一题】以下说法中<b>错误</b>的是：</p>
+                    <p>A. 能实施压缩感知技术的根本在于原始信号（或图像）有稀疏性，即代表信号（或图像）的\({\bf x}\)的大部分元素为零或接近零。</p>
+                    <p>B. 对于任何一个无向简单图，它的拉普拉斯矩阵的最小特征值一定为零。</p>
+                    <p>C. 在实际中为便于实施压缩感知，测量矩阵的元素可以不必依据标准正态分布从连续区间取值，可按一定分布（如伯努利分布）从离散区间取值。</p>
+                    <p>D. 在压缩感知的信号恢复问题中，（由L0范数最小化问题近似而得的）L1范数最小化问题是凸优化问题。</p>
+
+
+                    <div class="custom-line"></div>
+                    <p>【第二题】关于证明一致性哈希中每个机器分得的文件比例不会过大的思路，以下表述正确的是（假设仅用一个哈希函数做映射）：</p>
+                    <p>A. 将哈希值空间（即“圆圈”）均匀分成m段，证明以较大概率，每个段至少覆盖一个机器的哈希值（即每段至少包含一个机器）。</p>
+                    <p>B. 将哈希值空间（即“圆圈”）均匀分成m段，证明以较小概率，每个段至少覆盖一个机器的哈希值（即每段至少包含一个机器）。</p>
+                    <p>C. 将哈希值空间（即“圆圈”）均匀分成m段，证明以较大概率，至少存在一个段覆盖两个或以上的机器的哈希值。</p>
+                    <p>D. 将哈希值空间（即“圆圈”）均匀分成m段，证明以较小概率，至少存在一个段覆盖两个或以上的机器的哈希值。</p>
+
+
+
+                    <div class="custom-line"></div>
+                    <p>【第三题】关于布隆过滤器，以下表述正确的是：</p>
+                    <p>A. 布隆过滤器可以准确解决从属判断问题，即以100%的准确率判断任意给定元素是否曾经出现在数据流中。</p>
+                    <p>B. 令k为布隆过滤器中使用的哈希函数的个数，在过滤器（数组）长度不变时，布隆过滤器的误报率随k值单调递减（即哈希函数越多、误报率越低）。</p>
+                    <p>C. 在任意对误报率上界的要求下，使用多个哈希函数和单个哈希函数相比，前者对应布隆过滤器长度都约为后者的十分之一。</p>
+                    <p>D. 对于近似从属判断问题，关于算法给出的判断及其正误，有true positive（算法判断属于/判断正确）、true negative（算法判断不属于/判断正确）、false positive（算法判断属于/判断错误）、false negative（算法判断不属于/判断错误）四种可能性。对于布隆过滤器的判断结果，可能出现前面三种可能，不可能出现false negative。</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第四题】假设集合S大小为n，元素x不属于集合S。在为集合S中所有元素分别计算k个哈希值、将布隆过滤器的相应位置置1之后，若已知布隆过滤器的m个比特位中共有t个已经被置1（其余m-t位仍为0），那么元素x的第一个哈希值在布隆过滤器中的位置已经被置1的概率为：</p>
+                    <p>A. \( \frac{t}{m} \)</p>
+                    <p>B. \( 1-\frac{t}{m} \)</p>
+                    <p>C. 约为\( 1-e^{-\frac{kn}{m}} \)</p>
+                    <p>D. 约为\( 1-e^{-\frac{n}{m}} \)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第五题】对任意随机变量X、正整数n、常数a>0，若\( {\mathbb E}\left[|X|^n\right] \)存在，可以证得如下关系：</p>
+                    <p>A. \( {\bf Pr}\left[|X|\ge a\right]\le \frac{{\mathbb E}\left[|X|^n\right]}{a^n} \)</p>
+                    <p>B. \( {\bf Pr}\left[|X|\ge a\right]\le \frac{{\mathbb E}\left[|X|^n\right]}{a} \)</p>
+                    <p>C. \( {\bf Pr}\left[|X|\ge a\right]\le \frac{{\mathbb E}\left[|X|^n\right]}{\sqrt[n]{a}} \)</p>
+                    <p>D. \( {\bf Pr}\left[|X|\ge a\right]\le {\mathbb E}\left[|X|^n\right] \)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第六题】在对数据降维的过程中，JL变换不仅可以保护数据之间的欧氏距离，还可以保护数据对应的向量之间的夹角。为证明此性质，可以考虑任意两个向量p和q，将它们之间的夹角theta用向量p、向量q、向量p-q的模表示，即：（选择以下选项中正确的式子）</p>
+                    <p>A. \( \theta=arccos(\frac{||p||_2 + ||q||_2 - ||p-q||_2 }{2||p||_2 ||q||_2}) \)</p>
+                    <p>B. \( \theta=arccos(\frac{||p||_2^2 + ||q||_2^2 - ||p-q||_2^2 }{2||p||_2 ||q||_2}) \)</p>
+                    <p>C. \( \theta=arcsin(\frac{||p||_2^2 + ||q||_2^2 - ||p-q||_2^2 }{2||p||_2 ||q||_2}) \)</p>
+                    <p>D. \( \theta=arcsin(\frac{||p||_2 + ||q||_2 - ||p-q||_2 }{2||p||_2 ||q||_2}) \)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第七题】令A为d行k列的矩阵，它的所有元素都是独立同分布且分别服从标准正态分布。对k维的列向量x，Ax对应的是一个d维的列向量。那么向量Ax的模的平方的期望满足如下哪个等式：</p>
+                    <p>A. \(0\)</p>
+                    <p>B. \( {\mathbb E}\left[||{\bf A}{\bf x}||_2^2\right]=k||{\bf x}||_2^2 \)</p>
+                    <p>C. \( {\mathbb E}\left[||{\bf A}{\bf x}||_2^2\right]=||{\bf x}||_2^2 \)</p>
+                    <p>D. \( {\mathbb E}\left[||{\bf A}{\bf x}||_2^2\right]=d||{\bf x}||_2^2 \)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第八题】在数据流不同元素估计的问题中，为了用1个哈希函数实现500个哈希函数在降低估计值随机性方面的效果，可以将哈希值取值的区间[0,1]均匀切分成500段，然后分别为这些段记录落入其中的哈希值的最小值。用s1, s2, ..., s500表示标准化后的最小哈希值，那么可以将数据流的不同元素的个数估计为：（选择准确度最高的估计方式）</p>
+                    <p>A. \( \left(\frac{500}{\tilde s}-1\right) \), 其中\(\tilde s = \sum_i^{500}s_i\)</p>
+                    <p>B. \( 500\left(\frac{1}{\tilde s}-1\right) \), 其中\(\tilde s = \sum_i^{500}s_i\)</p>
+                    <p>C. \( 500\left(\frac{500}{\tilde s}-1\right) \), 其中\(\tilde s = \sum_i^{500}s_i\)</p>
+                    <p>D. \( \sum_{i=1}^{500}\left(\frac{1}{s_i}-1\right) \)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第九题】用n代表数据流中元素的个数、d代表<b>不同</b>元素的个数。假设随机哈希函数h可以将输入元素映射到[0,1]区间，即元素的哈希值服从[0,1]区间上的均匀分布。若记录所有元素的<b>最大哈希值</b>，结果为t，那么t的期望满足关系：</p>
+                    <p>A. \( {\mathbb E}\left[t\right]=\frac{d}{d+1} \)</p>
+                    <p>B. \( {\mathbb E}\left[t\right]=\frac{n}{n+1} \)</p>
+                    <p>C. \( {\mathbb E}\left[t\right]=\frac{1}{d+1} \)</p>
+                    <p>D. \( {\mathbb E}\left[t\right]=\frac{d-1}{d+1} \)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第十题】以下说法正确的是：</p>
+                    <p>A. 用k维树对数据做欧氏距离下的最近邻搜索时，计算复杂度随数据个数的增长呈指数型增长。</p>
+                    <p>B. 利用根据标准正态分布随机生成的矩阵对数据做线性变换，降维后的数据一定能满足欧式距离下低失真嵌入的要求。</p>
+                    <p>C. 用最小哈希的方法估计数据流中不同元素个数的优点之一是利于分布式处理数据，不同服务器只需记录各自数据流中数据的最小哈希值（最后汇总结果）。</p>
+                    <p>D. 用局部敏感哈希做Jaccard相似度下的最近邻搜索时，若需降低漏报（即错过相似度较高的文件）出现的可能，可为文件计算多个最小哈希值、得到文件的最小哈希值向量，再用随机哈希函数以最小哈希值向量为输入、把文件映射到一个“桶”。</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第十一题】给定矩阵\( X=\left[ {\begin{array}{ccc}
+                        0 &amp; 1 &amp; 0\\
+                        1 &amp; 0 &amp; 0\\
+                        -1 &amp; -1 &amp; 0\\
+                        \end{array} } \right] \)，假设它代表了三个三维数据（每行对应一个数据）而且数据已经做完预处理（即不用再对各维度缩放）。以下选项中哪个是这些数据的第一主成分：</p>
+                    <p>A. \( \left[ {\begin{array}{c}
+                        \frac{1}{\sqrt{2}} \\
+                        -\frac{1}{\sqrt{2}} \\
+                        0 \\
+                        \end{array} } \right] \)</p>
+                    <p>B. \( \left[ {\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0 \\ \end{array} } \right] \)</p>
+                    <p>C. \( \left[ {\begin{array}{c} \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{6}} \\ -\frac{2}{\sqrt{6}} \\ \end{array} } \right] \)</p>
+                    <p>D. \( \left[ {\begin{array}{c} 0 \\ 0 \\ 1 \\ \end{array} } \right] \)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第十二题】接上题，将原有的三个三维数据记作：\( {\bf x}_1=\left(0,1,0\right)\)，\( {\bf x}_2=\left(1,0,0\right)\)，\( {\bf x}_3=\left(-1,-1,0\right)\)，考虑以下两种情况：利用数据的第一主成分得到三个三维数据\( {\tilde {\bf x}}_1, {\tilde {\bf x}}_2, {\tilde {\bf x}}_3 \)；利用数据的第一主成分和第二主成分得到三个三维数据\({\tilde {\bf x}}_1, {\tilde {\bf x}}_2, {\tilde {\bf x}}_3\)。这两种情况下的近似误差分别为多少？<br><br>说明：若利用\(k\)个主成分\({\bf v}_1,{\bf v}_2,...,{\bf v}_k\)对数据\({\bf x}_i\)做近似，对得到的数据\({\tilde{\bf x}}_i\)有\( {\tilde{\bf x}}_i = \sum_{j=1}^k \langle {\bf x}_i, {\bf v}_j \rangle {\bf v}_j \)。近似误差定义为\( \frac{1}{m}\sum_{i=1}^{m} || {\bf x}_i - {\tilde{\bf x}}_i ||_2^2 \)。
+                    <p>
+                    <p>A. \(\frac{1}{3}\) 和 \(\frac{1}{6}\)</p>
+                    <p>B. \(-\frac{1}{3}\) 和 \(-\frac{1}{3}\)</p>
+                    <p>C. \(\frac{1}{3}\) 和 \(0\)</p>
+                    <p>D. \(\frac{1}{3}\) 和&nbsp;\(\frac{1}{3}\)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第十三题】用\( {\bf x}_1, {\bf x}_2, ..., {\bf x}_m \)等\(m\)个\(n\)维<b>列向量</b>表示\(m\)个已经过预处理的数据，并用\(m\times n\)的矩阵\({\bf{\rm X}}\)表示所有这些数据（每个数据对应矩阵的一行）。那么\({\bf{\rm X}}^T {\bf{\rm X}}\)是数据的协方差矩阵。下列等式中正确的是：</p>
+                    <p>A. \({\bf{\rm X}}^T {\bf{\rm X}}=\sum_{i=1}^m ({{\bf x}_i {\bf x}_i^T}) \)<br></p>
+                    <p>B. \({\bf{\rm X}}^T {\bf{\rm X}}=\sum_{i=1}^m ({{\bf x}_i^T {\bf x}_i})\)<br></p>
+                    <p>C. \({\bf{\rm X}}^T {\bf{\rm X}}=\sum_{i=1}^m \sum_{j=1}^m ({{\bf x}_i {\bf x}_j^T})\)<br></p>
+                    <p>D. \({\bf{\rm X}}^T {\bf{\rm X}}=\sum_{i=1}^m \sum_{j=1}^m ({{\bf x}_i^T {\bf x}_j})\)<br></p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十四题】以下哪个优化问题属于凸优化问题（假设\(x\)为一维变量，\(\mathbb R\)表示实数域）：</p>
+                    <p>A. \( {\min} \sqrt{x}\\
+{\rm ~~~~s.t.~~} x&gt;0. \)</p>
+                    <p>B. \( \min x^3\\
+{\rm ~~~~s.t.~~} x\in{\mathbb R}. \)</p>
+                    <p>C. \( {\max} x^2\\ {\rm ~~~~s.t.~~} x\in{\mathbb R}. \)</p>
+                    <p>D. \( {\max} \log{x}\\ {\rm ~~~~s.t.~~} x&gt;0. \)</p>
+                  
+                   
+                    <div class="custom-line"></div>
+                    <p>【第十五题】已知\(m\times n\)矩阵\({\rm{\bf A}}\)的奇异值分解为\({\rm{\bf A}}={\rm{\bf U}}{\rm{\bf S}}{\rm{\bf V}}^T\)且有\(m&gt; n\)。记\({\bf u}_i\)为\({\rm{\bf U}}\)的第\(i\)个列向量、\({\bf v}_j\)为\({\rm{\bf V}}\)的第\(j\)个列向量。若\(i\ne j\)，\({\bf u}_i^T {\rm{\bf A}} {\bf v}_j\)的值为多少？</span></p>
+                    <p>A. \(s_j\)</p>
+                    <p>B. \(0\)</p>
+                    <p>C. \(s_i\)</p>
+                    <p>D. \(s_i s_j\)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第十六题】已知矩阵\( {\rm{\bf A}}=\left[ {\begin{array}{cc}
+                        1 &amp; 0 &amp; 1 &amp; 0\\
+                        0 &amp; 1 &amp; 0 &amp; 1\\
+                        \end{array} } \right] \)，它的奇异值分解为（此题中为SVD的第二种定义、其余题为第一种定义）：\( {\rm{\bf A}}={\rm{\bf U}}{\rm{\bf S}}{\rm{\bf V}}^T=\left[ {\begin{array}{cc}
+                        1 &amp; 0\\
+                        0 &amp; 1\\
+                        \end{array} } \right]
+                        \left[ {\begin{array}{cc}
+                        \sqrt{2} &amp; 0\\
+                        0 &amp; \sqrt{2}\\
+                        \end{array} } \right]
+                        \left[ {\begin{array}{cccc}
+                        \frac{1}{\sqrt{2}} &amp; 0 &amp; \frac{1}{\sqrt{2}} &amp; 0\\
+                        0 &amp; \frac{1}{\sqrt{2}} &amp; 0 &amp; \frac{1}{\sqrt{2}}\\
+                        \end{array} } \right] \)。定义伪逆矩阵\({\rm{\bf A}}^+\)为\({\rm{\bf A}}^+={\rm{\bf V}}{\rm{\bf S}}^{-1}{\rm{\bf U}}^T\)，其中\({\rm{\bf S}}^{-1}\)是矩阵\({\rm{\bf S}}\)的逆矩阵。以下哪项是正确的：（注意，\(4\times 2\)矩阵\({\rm{\bf V}}\)不再是正交矩阵）</p>
+                    <p>A. \( {\rm{\bf A}}{\rm{\bf A}}^+=\left[ {\begin{array}{cc}
+                        1 &amp; 0 \\
+                        0 &amp; 1 \\
+                        \end{array} } \right] \) 且&nbsp;\( {\rm{\bf A}}^+{\rm{\bf A}}=\left[ {\begin{array}{cccc} 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 \\\end{array}} \right] \)<br></p>
+                    <p>B. \( {\rm{\bf A}}{\rm{\bf A}}^+=\left[ {\begin{array}{cc} 1 &amp; 0 \\ 0 &amp; 1 \\ \end{array} } \right] \) 且&nbsp;\( {\rm{\bf A}}^+{\rm{\bf A}}=\left[ {\begin{array}{cccc} \frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp; 0\\ 0 &amp; \frac{1}{2} &amp; 0 &amp; \frac{1}{2}\\ \frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp; 0\\ 0 &amp; \frac{1}{2} &amp; 0 &amp; \frac{1}{2} \\\end{array}} \right] \)<br></p>
+                    <p>C. \( {\rm{\bf A}}{\rm{\bf A}}^+=\left[ {\begin{array}{cc} 2 &amp; 0 \\ 0 &amp; 2 \\ \end{array} } \right] \) 且 \( {\rm{\bf A}}^+{\rm{\bf A}}=\left[ {\begin{array}{cccc} 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 1 &amp; 0 &amp; 1\\ 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 1 &amp; 0 &amp; 1 \\\end{array}} \right] \)<br></p>
+                    <p>D. \( {\rm{\bf A}}{\rm{\bf A}}^+=\left[ {\begin{array}{cc} 2 &amp; 0 \\ 0 &amp; 2 \\ \end{array} } \right] \) 且&nbsp;\( {\rm{\bf A}}^+{\rm{\bf A}}=\left[ {\begin{array}{cccc} 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 \\\end{array}} \right] \)<br></p>
+
+
+
+
+                    <div class="custom-line"></div>
+                    <p>【第十七题】给定矩阵\( {\rm{\bf A}}=\left[ {\begin{array}{ccc}
+                        0 &amp; 1 &amp; 1\\
+                        \sqrt{2} &amp; 2 &amp; 0\\
+                        0 &amp; 1 &amp; 1\\
+                        \end{array} } \right] \)，若在所有秩为1的实数矩阵中，矩阵\( {\rm{\bf B}}^*\)可以最小化\( ||{\rm{\bf A}}-{\rm{\bf B}}||_F \)（\({\rm{\bf B}}\)可以取任意秩为1的实数矩阵）。那么\( ||{\rm{\bf A}}-{\rm{\bf B}}^*||_F \)的值为：</p>
+                    <p>A. \(\sqrt{2}\)</p>
+                    <p>B. \(2\)</p>
+                    <p>C. \(0\)</p>
+                    <p>D. \(\sqrt{10}\)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第十八题】接上题，若矩阵\({\rm {\bf A}}\)的奇异值分解为\({\rm {\bf A}}={\rm {\bf U}}{\rm {\bf S}}{\rm {\bf V}}^T\)，且矩阵\({\rm {\bf S}}\)的对角线元素从大到小排列。以下列向量中哪个可以是矩阵\({\rm{\bf U}}\)的第一列向量（即\({\rm {\bf A}}\)的最大奇异值对应的<b>左</b>奇异向量）：</p>
+                    <p>A. \( \left[ {\begin{array}{c}
+                        \frac{\sqrt{6}}{6} \\
+                        \frac{\sqrt{3}}{2} \\
+                        \frac{\sqrt{3}}{6} \\
+                        \end{array} } \right] \)</p>
+                    <p>B. \( \left[ {\begin{array}{c} \frac{\sqrt{3}}{3} \\ 0 \\ -\frac{\sqrt{6}}{3} \\ \end{array} } \right] \)</p>
+                    <p>C. \( \left[ {\begin{array}{c} \frac{\sqrt{2}}{2} \\ 0 \\ -\frac{\sqrt{2}}{2} \\ \end{array} } \right] \)</p>
+                    <p>D. \( \left[ {\begin{array}{c}
+                        -\frac{\sqrt{6}}{6} \\
+                        -\frac{\sqrt{6}}{3} \\
+                        -\frac{\sqrt{6}}{6} \\
+                        \end{array} } \right] \)</p>
+
+                    <div class="custom-line"></div>
+                    <p>【第十九题】若\({\bf {\rm V}}\)是一个\(n \times k\)矩阵且它的\(k\)个列向量构成标准正交向量组（即分别是单位向量且彼此正交）。以下关系中一定成立的有哪些？（\(n\)不一定等于\(k\)）</span></p>
+                    <p>A. \( {\bf {\rm V}}^T {\bf {\rm V}}\) 是\(k \times k\)的单位矩阵<br></p>
+                    <p>B. 对任意\(k \times 1\)向量\({\bf x}\)有&nbsp;\( ||{\bf{\rm V}} {\bf x} ||_2 = || {\bf x} ||_2 \)</p>
+                    <p>C. \({\bf {\rm V}} {\bf {\rm V}}^T\) 是\(n \times n\)的单位矩阵<br></p>
+                    <p>D. 对任意\(n \times 1\)向量\({\bf x}\)有&nbsp;\( ||{\bf{\rm V}}^T {\bf x} ||_2 = || {\bf x} ||_2 \)<br></p>
+
+                    <div class="custom-line"></div>
+                    <p>【第二十题】在以下选项中，请选择对<b>任意</b>随机变量\( X,Y \)都成立的关系：</p>
+                    <p>A. \( {\mathbb E}\left[aX-bY\right]=a{\mathbb E}\left[X\right]-b{\mathbb E}\left[Y\right] \) （其中\( a,b \)为常数）<br></p>
+                    <p>B. \( {\mathbb E}\left[XY\right]={\mathbb E}\left[X\right]{\mathbb E}\left[Y\right] \)<br></p>
+                    <p>C. \( {\bf Pr}\left[X\ge a {\mathbb E}\left[X\right]\right] \le \frac{1}{a} \) （其中\( a&gt;0 \)为常数）<br></p>
+                    <p>D. \( {\bf Var}\left[aX+bY\right]=a^2 {\bf Var}\left[X\right]+b^2 {\bf Var}\left[Y\right] \) （其中\( a,b \)为常数）<br></p>
+
+                    <div class="custom-line"></div>
+                    <p>【第二十一题】对\(m\times n\)矩阵\({\rm{\bf A}}\)，若\(m&gt;n&gt;1\)且\({\rm{\bf A}}\)的奇异值分解为\({\rm{\bf A}}={\rm{\bf U}}{\rm{\bf S}}{\rm{\bf V}}^T\)（矩阵\({\rm{\bf S}}\)对角线上元素从大到小排列）。以下<b>哪些</b>说法是正确的：</p>
+                    <p>A. \({\rm{\bf S}}\)的第一行第一列元素的平方等于\({\rm{\bf A}}^T {\rm{\bf A}}\)的最大特征值。<br></p>
+                    <p>B. \({\rm{\bf S}}\)的第一行第一列元素的平方等于\({\rm{\bf A}} {\rm{\bf A}}^T\)的最大特征值。<br></p>
+                    <p>C. \({\rm{\bf V}}\)的第一列向量是\({\rm{\bf A}}^T {\rm{\bf A}}\)的最大特征值对应的特征向量。<br></p>
+                    <p>D. \({\rm{\bf U}}\)的第一列向量是\({\rm{\bf A}} {\rm{\bf A}}^T\)的最大特征值对应的特征向量。<br></p>
+
+
+                    <div class="custom-line"></div>
+                    <p>【第二十二题】关于一致性哈希，下列说法正确的有：</p>
+                    <p>A. 假设只用一个哈希函数对机器做映射，当机器数从n台减为n-1台，所需移动文件的比例的期望为\( \frac{1}{n-1} \)。</p>
+                    <p>B. 用多个哈希函数对每个机器做映射的优势包括：可以有效减小每个机器分得文件占总文件比例的<span>期望</span>。</p>
+                    <p>C. 用多个哈希函数对每个机器做映射的优势包括：可以有效减小每个机器分得文件占总文件比例的方差。</p>
+                    <p>D. 用多个哈希函数对每个机器做映射的优势包括：在不同机器的存储空间大小有差异时，可以根据比例调整不同机器在映射下哈希值的个数（即调整“圆”上不同机器出现的次数），避免这些机器分摊到同样数量的文件。<br></p>
+
+
+
+                    <div id="footer">
+                        <div id="footer-text">
+                            <div id="footer-text2">Copyright (c) 2024 Haoran Yu. All rights reserved.</div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script type="text/javascript" async="" src="./documents_home/ga.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga1.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga2.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24986751-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        function show(){
+         if(document.getElementById("table_foot").style.display=="block"){
+          document.getElementById("table_foot").style.display="none";
+         }else{
+          document.getElementById("table_foot").style.display="block";
+         }
+        }
+    </script>
+
+    <style type="text/css">
+        embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	 display: none !important;}
+    </style>
+</body>
+
+</html>

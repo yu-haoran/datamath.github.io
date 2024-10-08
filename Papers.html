@@ -1,0 +1,220 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据科学的数学基础</title>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横线示例</title>
+    <style>
+        .custom-line {
+            border: none;        /* 去掉默认边框 */
+            height: 2px;        /* 设置线的高度 */
+            background-color: #000; /* 设置线的颜色 */
+            width: 100%;        /* 设置线的宽度 */
+            margin: 20px 0;     /* 设置上下间距 */
+        }
+    </style>
+</head>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/">
+    <link rel="stylesheet" href="./documents_home/jemdoc.css" type="text/css">
+    <title>Mathematical Foundations for Data Science</title>
+    <style type="text/css" style="display: none !important;">
+        object:not([type]),object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}
+    </style>
+    <style>
+        body {
+            font-family: "Rockwell", "KaiTi", "楷体", "Arial", sans-serif; /* 字体优先级 */
+        }
+        body {
+            font-size: 24px !important;
+        }
+
+        h1 {
+            font-size: 48px !important;
+        }
+
+        h2 {
+            font-size: 38px !important;
+        }
+
+        p {
+            font-size: 24px !important;
+        }
+        a {
+            font-size: 24px !important;
+        }
+        div {
+            font-size: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <table summary="Table for page layout." id="tlayout">
+        <tbody>
+            <tr valign="top">
+                <td id="layout-menu">
+                    <div class="menu-category">目录</div>
+                    <div class="menu-item"><a href="index.html">课程介绍</a></div>
+                    <div class="menu-item"><a href="Papers.html" class="current">经典科研问题</a></div>
+                    <div class="menu-item"><a href="DiscussionPre.html">讨论教学-预设问题</a></div>
+                    <div class="menu-item"><a href="DiscussionRand.html">讨论教学-即兴问题</a></div>
+                    <div class="menu-item"><a href="OpenQ.html">开放问题列表</a></div>
+                    <div class="menu-item"><a href="Exercises.html">课后习题</a></div>
+                </td>
+                <td id="layout-content">
+                    <p><br></p>
+
+                    <div id="toptitle">
+                        <h1><b>经典科研问题</b></h1>
+                    </div>
+
+                    <div class="custom-line"></div>
+                    <p>【第一篇论文】Karger, David, et al., "Consistent hashing and random trees: Distributed caching protocols for relieving hot spots on the world wide web," STOC 1997.</p>
+                    <a class="badge badge-success" href="./documents_home/1Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文提出了一种分布式缓存协议，可以用于缓解万维网中对热点文件提取带来的拥塞。论文提出了一种基于哈希函数的文件存储方法，使服务器无需获取整个网络的完整状态信息，就可以有效应对热点文件提取带来的拥塞和网络延迟。论文详细探讨了一致哈希函数的设计，在存储服务器数目发生变动时，该类哈希函数可以保证大部分文件的存储位置不会发生变动。通过实验验证，这种新型缓存协议能显著提升网络性能，尤其在处理大规模访问请求时，能有效分散服务器负载、防止服务器过载。</p>
+                    <p><b>科研问题：</b>在分布式缓存中，文件经常需要在多个缓存服务器节点之间进行分配以提高系统的效率和可扩展性。一个重要科研问题是如何在节点动态增减的情况下，确保数据的均匀分布和高效访问，同时最小化因服务器节点变动引起的数据迁移和重新分布的开销。这个问题尤为重要，因为如果频繁迁移数据可能导致重大的网络性能问题和储存资源浪费。</p>
+                                 
+                  
+                    <div class="custom-line"></div>
+                    <p>【第二篇论文】Broder, Andrei, and Michael Mitzenmacher, "Network applications of bloom filters: A survey," Internet mathematics, 2004.</p>
+                    <a class="badge badge-success" href="./documents_home/2Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文综述了布隆过滤器在网络中的多种应用，并提出一个统一的数学框架用以分析布隆过滤器在各种应用中的作用。布隆过滤器是一种简单且空间利用率高的随机化数据结构，可用于从属判断问题，虽然可能有误报的情况，但其节省的空间通常能弥补这一缺点。论文首先回顾了布隆过滤器的相关历史，而后探讨了它在网络中的四种应用。通过讨论布隆过滤器的各种用途，论文希望促进其在网络中的更广泛应用。</p>
+                    <p><b>科研问题：</b>在大规模分布式系统中（尤其是涉及复杂网络结构和动态数据流的应用中），如何高效地管理和查询数据从属是一个重要的科研问题。这涉及到在不断变化的系统中，如何在不存储整个数据集的前提下快速判断数据是否已经存在于集合之中，以节省存储资源和提高处理速度。在解决该问题时，需要注意最小化误报的发生，这在实时数据处理和网络安全领域尤为关键。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第三篇论文】Cormode, Graham, and Shan Muthukrishnan, "An improved data stream summary: The count-min sketch and its applications," Journal of Algorithms, 2005.</p>
+                    <a class="badge badge-success" href="./documents_home/3Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文介绍了Count-Min Sketch这种新型的数据结构，用于总结和处理数据流。Count-Min Sketch能够在有限的存储空间下，快速解决数据流应用中的问题，如高频元素寻找问题。论文通过理论和实验分析，展示了使用Count-Min Sketch解决这些问题在时间和空间上的显著优势。相较于以往方法，其所需的空间和处理时间都有大幅改进，特别是在错误率低于固定阈值的前提下，可以显著降低空间复杂度。通过这种新的数据结构，能更有效地处理和分析大规模数据流。</p>
+                    <p><b>科研问题：</b>在存储空间等资源受限的环境中，如何有效地对数据流进行摘要和查询处理是一个重要的科研问题。例如，在网络流量监控、商业交易数据分析或社交媒体动态内容追踪中，需要实时估计数据的分布特征、高频元素、分位数等，这些问题均涉及到如何从连续不断的大数据流中快速提取有价值的信息。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第四篇论文】Bar-Yossef, Ziv, et al., "Counting distinct elements in a data stream," International Workshop on Randomization and Approximation Techniques in Computer Science, 2002.</p>
+                    <a class="badge badge-success" href="./documents_home/4Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文介绍了三种算法，旨在提高数据流中不同元素数量估计的效率和准确性。在数据流应用中，这些算法只需消耗很少的存储空间，确保在一定错误范围内（如估计值与真实值的比在\(1±ε\)之内），高效地估计出数据流中的不同元素的数量。论文首先定义了问题的数学模型和算法的效率标准，再详细介绍了每种算法的工作原理、空间时间复杂度，并通过对比其它方法，展示所提算法在空间利用和处理速度上的优势。这些算法可以帮助在数据库查询和网络流量分析等应用中更有效地处理和分析大规模数据。</p>
+                    <p><b>科研问题：</b>在数据流处理中，如何快速估计不同元素的个数（尤其在内存受限且数据流动态变化的环境下如何实现准确的估计）是一个重要的科研问题。这个问题的挑战在于如何在单次或极少次数的数据扫描中，准确地统计出不同元素个数。这种统计在多种应用场景中具有重要意义，例如，在网络监控中评估不同的数据包目的地数量。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第五篇论文】Ailon, Nir, and Bernard Chazelle, "Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform," STOC 2006.</p>
+                    <a class="badge badge-success" href="./documents_home/5Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文介绍了一种快速JL变换的方法，用以显著提升数据降维和最近邻搜索的效率。通过将随机傅立叶变换与稀疏映射矩阵结合，该方法能在保持低失真的同时比传统的随机映射方法更快处理数据。论文主要研究了如何在欧几里得空间中（特别是高维空间）利用低失真嵌入实现近似最近邻搜索。此外，论文还探讨了如何利用快速JL变换处理哈密顿立方体上的搜索问题，并提供了一种在查询时间方面显著改善的改进搜索算法。</p>
+                    <p><b>科研问题：</b>如何在高维空间中做相似搜索（例如在大规模数据集中快速有效地找到与查询项相似的数据点）是一个重要的科研问题。随着数据维度的增加，数据点间的距离计算变得更为困难，且数据点可能在空间中均匀分布，导致传统的搜索方法效率低下。这种现象通常被称为“维度的诅咒”，即数据点随着维度的增长而在空间中越来越稀疏。在多个领域中，如生物信息学、金融分析和社交网络服务，高维相似搜索的需求日益增长，提出能够有效处理高维数据并快速响应查询的技术对推动这些领域的进步具有重要意义。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第六篇论文】Datar, Mayur, et al., "Locality-sensitive hashing scheme based on p-stable distributions," Proceedings of the Annual Symposium on Computational Geometry 2004.</p>
+                    <a class="badge badge-success" href="./documents_home/6Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文介绍了一种新的基于p稳定分布的局部敏感哈希方法，用于处理近似最近邻问题。相较于传统的空间划分方法，这种基于哈希的方法能显著提高应对高维数据的搜索效率。论文展示了该方法如何在不嵌入到哈明空间的情况下直接在欧几里得空间中执行搜索、提高查询的时间效率。论文详细讨论了这一新方法如何在处理l2范数时，通过调整哈希桶的大小优化性能，并证明了对小于1的p值，这是首个已知的有效的近似最近邻方法。此研究不仅扩展了局部敏感哈希的应用范围，还为高维数据提供了一种更为高效的处理方法，在动态数据环境中，该方法也显示出良好的扩展性和适应性。</p>
+                    <p><b>科研问题：</b>如何在保持数据结构的简单性和实现的易用性的同时，有效地处理和改进动态数据环境下的搜索算法是一个重要的科研问题。在实际应用中，数据常常是动态变化的，涉及到数据的增加、删除或更新。这种动态性要求搜索算法不仅要处理静态数据集上的查询，还需要有效地适应数据的动态变化，而传统的基于树的数据结构在处理动态变化时往往需要复杂的维护操作。这一问题的解决对于实时数据处理、在线学习、网络服务等领域尤为重要。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第七篇论文】Abdi, Herve, and Lynne J. Williams, "Principal component analysis," Wiley interdisciplinary reviews: Computational statistics 2010.</p>
+                    <a class="badge badge-success" href="./documents_home/7Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文详细介绍了主成分分析（PCA）的理论基础及应用。主成分分析旨在从多个相关的变量中提取最重要的信息，并通过新的正交向量集（即主成分）重新表达这些信息。这些主成分能够揭示观测数据和变量之间的相似关系。论文首先回顾了PCA的历史和数学原理，然后详细介绍了其在定量变量分析中的应用，并对主成分的数学特性进行了阐述，包括其与特征值分解和奇异值分解等的关联。此外，论文还扩展了PCA的应用，介绍了如何应用多因素分析处理不同的向量集。</p>
+                    <p><b>科研问题：</b>在多变量数据分析中，一个关键科研问题是如何从包含大量相关变量的复杂数据集中提取出最重要的信息。在许多科学研究和工业应用中，数据集往往由大量的观测值组成，这些观测值包含多个量化指标，而这些指标间往往存在一定的相关性。这种高维数据的存在使得数据分析和解释变得复杂和困难，特别是在需要对数据进行可视化、分类或压缩时。因此，思考如何有效地识别和提取出这些大量数据中最有影响力的变量，并通过更简洁的形式表达原始数据集的核心信息对增强数据分析的可解释性、提高数据处理的效率以及优化数据存储都有重要意义。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第八篇论文】Halko, Nathan, et al., "An algorithm for the principal component analysis of large data sets," SIAM Journal on Scientific Computing 2011.</p>
+                    <a class="badge badge-success" href="./documents_home/8Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文介绍了一种适用于大数据集的主成分分析（PCA）算法。传统的PCA方法由于内存限制和高计算复杂度，很难处理大规模数据。为解决这一问题，本文采用了一种随机化的PCA算法，不仅能有效处理存储在硬盘上的大数据，还可以在多处理器环境中保持较高的计算效率。算法的核心思想是通过随机数生成器构建矩阵，以此逼近原始数据矩阵的重要特征。具体操作包括使用高斯随机变量构建辅助矩阵，并通过多次矩阵乘法和QR分解迭代逼近数据的主要特征空间。该过程大大减少了对内存的需求，并能快速得到与原数据高度一致的低秩近似矩阵。此外，论文详细讨论了算法的计算成本，包括在不同硬件配置下的内存使用、磁盘访问次数以及计算时间等，通过多个数值实验验证了算法在不同类型的数据集上的有效性和鲁棒性，展示了其在实际应用中的广泛适用性和优越性。</p>
+                    <p><b>科研问题：</b>在大数据集上进行主成分分析（PCA）面临的独特难点主要集中在数据量过大而无法直接加载到内存中进行计算。这种情况下，数据必须被分批处理或存储在外部硬盘上，导致数据访问变得复杂且耗时。此外，传统PCA算法在处理如此庞大的数据时会遇到计算效率低下的问题，因为它们通常需要多次遍历整个数据集才能收敛到稳定的解，这在大规模数据环境下变得不切实际。更重要的是，高维数据的稀疏性和噪声问题也会影响PCA的准确性和稳定性，处理这些高维数据时如何有效提取信息并降低错误率成为关键的科研挑战。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第九篇论文】Klema, Virginia, and Alan Laub, "The singular value decomposition: Its computation and some applications," IEEE Transactions on Automatic Control 1980.</p>
+                    <a class="badge badge-success" href="./documents_home/9Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文详细介绍了奇异值分解（SVD）的计算方法及其在多个领域的应用，特别是在处理大规模和复杂数据集方面的重要性。奇异值分解是线性代数中一种强大的工具，它可以分解矩阵为一系列的线性变换，这些变换既能揭示数据的结构，也能指出数据的关键特征。论文不仅解释了SVD的数学原理，还探讨了实现SVD的具体方法。论文还展示了通过SVD解决实际问题的多个应用案例以及在执行SVD时可能遇到的数值问题，例如稳定性问题。</p>
+                    <p><b>科研问题：</b>在数据科学、信号处理等领域，科研人员经常需要从大量的数据中提取关键信息，但数据常常包含噪声或冗余信息，这对数据的处理和分析提出了挑战。特别是在处理高维数据集时，如何有效地识别和提取数据中最重要的特征同时去除无关特征和噪声是一个关键的科研问题。这一问题在图像压缩、语音识别以及生物信息学等领域尤为突出，对提高数据处理效率和分析准确性有重要影响。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十篇论文】Hastie, Trevor, et al., "Matrix completion and low-rank SVD via fast alternating least squares," The Journal of Machine Learning Research 2015.</p>
+                    <a class="badge badge-success" href="./documents_home/10Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文研究了解决矩阵补全问题的算法。矩阵补全在推荐系统等领域的应用广泛，研究基于一种凸优化方法，通过引入核范数正则化来处理缺失数据。该算法的核心是通过迭代，逐步调整矩阵分解因子，以优化填充丢失数据、补全矩阵的效果。论文提出的softImpute-ALS在计算效率和收敛速度上相较于传统的交替最小二乘法（ALS）具有显著优势。具体而言，该算法通过稀疏矩阵表示和低秩近似，极大地降低了存储和计算成本。此外，实验结果表明，softImpute-ALS在处理大规模数据集时能够更快速地接近最优解。</p>
+                    <p><b>科研问题：</b>低秩矩阵近似（即如何用较低秩的矩阵有效表示原始高秩矩阵）是一个重要的科研问题。该问题在信号处理、图像压缩、推荐系统等领域具有广泛的应用。在许多实际场景中，数据通常是高维的，但其内在结构往往是低秩的。例如，在推荐系统中，用户与物品的评分矩阵通常存在大量缺失值，而其潜在的用户偏好和物品特征可以用低秩矩阵来刻画。研究低秩矩阵近似不仅有助于降低存储和计算复杂性，还有助于提升数据的可解释性和推理能力。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十一篇论文】Y. Ng, Andrew, et al., "On spectral clustering: Analysis and an algorithm," NIPS 2001.</p>
+                    <a class="badge badge-success" href="./documents_home/11Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文介绍了一种谱聚类算法，并通过矩阵微扰理论分析该算法。谱聚类方法使用数据派生矩阵的特征向量对数据点进行聚类，论文通过构建加权图（节点对应数据点、边表示点与点之间的距离），然后使用图的拉普拉斯矩阵的前几个特征向量寻找最优切割，从而递归地找到k个聚类。此外，实验结果表明，该算法在一些具有挑战性的聚类问题上表现出色。例如，在理想情况下（即各类中的点彼此距离无限远时），算法能够准确地识别出各个类。这篇论文不仅提供了一种有效的谱聚类算法，还深入分析了算法的理论基础，使这种方法在处理复杂数据时更加可靠。</p>
+                    <p><b>科研问题：</b>聚类是数据分析中的一个经典问题，其目标是将数据集中的数据根据相似性分成多个类别或群组。聚类广泛应用于各种科学和商业领域，包括图像分析、社交网络、市场细分以及生物信息学等。聚类问题的核心挑战在于如何定义“相似性”以及如何有效地识别数据中的内在结构。不同的聚类算法试图以不同的方式解决这些问题，例如通过几何距离、概率模型或连通性来度量相似性。聚类的难点还包括处理大规模数据集、噪声数据和具有复杂分布的数据，以及如何确定群组的数量和形状。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十二篇论文】Donoho, David L., "Compressed sensing," IEEE Transactions on Information Theory 2006.</p>
+                    <a class="badge badge-success" href="./documents_home/12Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文基于转换稀疏性原理介绍了压缩感知这种能在不完全的频率信息下实现信号精确重构的方法。传统的数据采集方法往往涉及大量数据的收集，而其中大部分数据在后续处理中将被抛弃，这不仅浪费了资源，也增加了处理过程的复杂性。压缩感知技术通过非适应性和并行化的测量方式，直接获取重要的信号信息，从而显著降低采样率和数据处理所需资源。论文详细分析了信号在某些正交基下具有稀疏表示的情况，并探讨了如何利用较少的非适应性测量精确重构信号。理论分析和实验结果都表明，压缩感知不仅能有效减少必要的测量数量，还能在一定程度上通过凸优化问题简化信号的处理过程。
+此外，论文提到了压缩感知在各领域的潜在应用，如医学成像和遥感，这些领域通常需要处理大量数据和高分辨率的图像。</p>
+                    <p><b>科研问题：</b>在现代科技应用中，如医学成像、遥感探测等领域，常需要采集和处理大量数据，这不仅耗费大量的存储资源，同时也增加了处理这些数据的计算负担。一个核心科研问题是如何在保证数据可重构性的前提下，通过最少的采样完成有效数据的获取。这涉及到数学、信号处理和统计学等多个领域的知识，包括稀疏表示理论、非线性优化算法以及随机采样技术。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十三篇论文】Wu, Yan, et al., "Deep Compressed Sensing," ICML 2019.</p>
+                    <a class="badge badge-success" href="./documents_home/13Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文提出了一种新型的深度压缩感知框架，它通过将压缩感知技术与深度神经网络结合，显著提升了信号恢复的性能和速度。传统的压缩感知依赖于信号的稀疏性，并通过优化过程对信号进行重构，这一过程既耗时又成本高昂。本文中的深度压缩感知框架通过联合训练生成器和优化重构过程，有效地解决了这些限制。论文详细探讨了如何在不依赖信号稀疏性的前提下，使用深度生成模型改进压缩感知，确保从随机测量中恢复出高质量的信号。此外，研究还引入了元学习，优化了重构过程，显著减少了所需的计算步骤，同时保持了信号恢复质量。实验结果表明，这种新方法在处理图像和其他复杂数据时，具有更高的效率和更好的性能。</p>
+                    <p><b>科研问题：</b>如何快速从低维度的压缩测量中恢复出高维度的信号是一个重要的科研问题。传统的压缩感知技术依赖信号的稀疏性，并通过复杂的优化过程进行信号重构，这一过程不仅计算成本高，而且在处理非稀疏信号或大规模数据集时效率较低。面对现实世界中的复杂数据结构，如何有效从少量测量中恢复出准确的高维数据同时克服计算资源的限制和提升处理速度是一个挑战。</p>
+                  
+                    <div class="custom-line"></div>
+                    <p>【第十四篇论文】Tropp, Joel A., and Anna C. Gilbert, "Signal recovery from random measurements via orthogonal matching pursuit," IEEE Transactions on Information Theory 2007.</p>
+                    <a class="badge badge-success" href="./documents_home/14Paper.pdf">论文下载</a>
+                    <p><b>内容简述：</b>论文介绍了一种名为正交匹配追踪（Orthogonal Matching Pursuit, OMP）的贪婪算法如何确保在理论和实验中从随机线性测量下恢复信号。论文研究表明，OMP算法可以利用大约\(O(mlogd)\)的随机线性测量恢复一个在\(d\)维空间中最多有\(m\)个非零项的信号。这一效果显著优于之前的方法，并与另一种方法（基追踪，Basis Pursuit）的效果相当。论文通过一系列理论推导和实验验证，展现了OMP在处理稀疏信号恢复时的高效性和准确性。</p>
+                    <p><b>科研问题：</b>在高维数据处理中，一个关键的科研问题是如何从有限的线性测量中准确恢复稀疏信号。正确重构信号对于数据压缩、图像处理等领域至关重要，在测量成本高昂或数据获取受限的情况下，信号重构可以极大降低测量次数和存储的数据量。这一问题的核心挑战在于确定最少需要多少测量才能确保信号可以被完整且准确地恢复，以及如何设计测量过程才能最大化利用信号的稀疏性质，提高恢复的效率和精度。</p>
+
+
+
+                    <div id="footer">
+                        <div id="footer-text">
+                            <div id="footer-text2">Copyright (c) 2024 Haoran Yu. All rights reserved.</div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script type="text/javascript" async="" src="./documents_home/ga.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga1.js"></script>
+    <script type="text/javascript" async="" src="./documents_home/ga2.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24986751-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        function show(){
+         if(document.getElementById("table_foot").style.display=="block"){
+          document.getElementById("table_foot").style.display="none";
+         }else{
+          document.getElementById("table_foot").style.display="block";
+         }
+        }
+    </script>
+
+    <style type="text/css">
+        embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	 display: none !important;}
+    </style>
+</body>
+
+</html>
